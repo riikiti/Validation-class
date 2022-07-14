@@ -275,38 +275,47 @@ class Validation {
                 if (e.getAttribute("data-input")) {
                     let inputType = e.getAttribute("data-input"); // get type of input
                     this.#InputStatus.inputType = false; // make status of input for validation
-                    this.#SelectInput(inputType,e); // enter value to variable, which contains in form
+                    this.#SelectInput(inputType, e); // enter value to variable, which contains in form
                 }
             });
-
-
+            this.#CheckDisabled(); // validate
+        } else {
+            console.log("error");
         }
     }
 
-    #SelectInput(input, value){
+    #SelectInput(input, value) {
         if (input == "Name") {
             this.#Name = value;
         }
-        if (input == "Phone"){
-            this.#Phone= value;
+        if (input == "Phone") {
+            this.#Phone = value;
         }
-        if (input == "Mail"){
-            this.#Mail= value;
+        if (input == "Mail") {
+            this.#Mail = value;
         }
-        if (input == "Select"){
-            this.#Select= value;
+        if (input == "Select") {
+            this.#Select = value;
         }
-        if (input == "Textarea"){
-            this.#Textarea= value;
+        if (input == "Textarea") {
+            this.#Textarea = value;
         }
-        if (input == "File"){
-            this.#File= value;
+        if (input == "File") {
+            this.#File = value;
         }
 
     }
 
-    #CheckDisabled(){
+    #CheckDisabled() {
+        let inputs = Object.keys(this.#InputStatus); // get full keys/name of inputs
+        inputs.forEach((e) => {
+            this.#SelectValidate(e);
+        })
 
+    }
+
+    #SelectValidate(input) {
+        this['Check' + input]();
     }
 
 }
