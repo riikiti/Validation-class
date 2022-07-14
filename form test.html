@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="/scss/main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Condensed&family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet"
+    />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+
+</head>
+<body>
+
+<form class="js-form customer__contact-form modal__wrap_content__form form-modal">
+    <h2 class="customer__contact-title contact-form-title">
+        Обратная <span class="span-header-modal"
+    > связь</span
+    >
+    </h2>
+    <div class="customer__contact-you contact-you">
+        <!-- name-->
+        <label class="form__item">
+            <input
+                    type="text"
+                    class="modal-input js-input-text"
+                    placeholder="Иванов Иван Иванович"
+                    required
+            />
+            <div class="message-show">
+                                <span class="form__warning js-warning">
+					<span class="form__warning_message">Введите больше</span>
+				</span>
+            </div>
+        </label>
+        <!-- tel-->
+        <label class="form__item">
+            <input type="tel" name="phone" autocomplete="off"
+                   class="form__input js-input-phone modal-input" placeholder="+7 (___) ___-__-__"
+                   required/>
+            <div class="message-show">
+                                <span class="form__warning js-warning">
+					<span class="form__warning_message">Error message</span>
+				</span>
+            </div>
+        </label>
+        <!-- mail-->
+        <label class="form__item">
+            <input
+                    type="text"
+                    placeholder="ivanov@mail.ru"
+                    class="modal-input js-input-mail "
+                    required
+
+            />
+            <div class="message-show">
+                                <span class="form__warning js-warning">
+					<span class="form__warning_message">Error message</span>
+				</span>
+            </div>
+        </label>
+        <!-- msg-->
+        <label class="form__item">
+                            <textarea class="modal-textarea contact-textarea js-input-text"
+                                      placeholder="Сообщение"
+
+                            ></textarea>
+            <div class="message-show">
+                                <span class="form__warning js-warning">
+					<span class="form__warning_message">Error message</span>
+				</span>
+            </div>
+        </label>
+        <!-- file-->
+
+        <label class="modal-file-label">
+            <input class="modal-input custom-file-upload" placeholder="" type="file">
+            <span class="file-name">Прикрепить файл до 25 Мб</span>
+        </label>
+        <!-- connect-->
+        <label class="label-connection-modal">Предпочтительный способ связи</label>
+        <div class="modal-change-connect ">
+            <div class="modal-change-connect__connect-check  ">
+                <input class="custom-checkbox" type="checkbox">
+                <label>Телефон</label>
+            </div>
+            <div class="modal-change-connect__connect-check ">
+                <input class="custom-checkbox" type="checkbox">
+                <label>Почта</label>
+            </div>
+        </div>
+        <p class="personal-info">Отправляя заявку, вы автоматически соглашаетесь с условиями <a
+                href="#">
+            обработки персональных данных</a>
+        </p>
+        <button type="button" value="Посчитать стоимость"
+                class="form__submit js-form-submit form__submit modal__button modal__button__type__thanks">
+            <span>отправить</span></button>
+    </div>
+    <div class="  thanks-msg">
+        <div class="modal__wrap contacts-modal-wrap">
+            <div class="modal__wrap_content ">
+                <h4 class="modal-width ">Спасибо <span> за заявку!</span></h4>
+                <p class="modal-text">Мы свяжемся с вами в ближайшее время и ответим на все
+                    вопросы!</p>
+                <button class="modal__button modal__button__type__thanks" type="submit"><span>отправить</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+<script src="/js/jqery.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/libs/jquery-3.5.1.min.js"></script>
+<script src="/js/libs/jquery.inputmask.min.js"></script>
+</body>
+</html>

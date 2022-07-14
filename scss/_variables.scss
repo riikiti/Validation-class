@@ -1,0 +1,22 @@
+@import "reset";
+@import "fonts";
+
+//fonts
+$font-roboto: 'Roboto', 'Arial', sans-serif;
+$font-inter: 'Inter', 'Arial', sans-serif;
+$font-roboto-condensed: 'Roboto Condensed', 'Arial', sans-serif;
+
+//colors
+$color-primary: #2864B2;
+$color-cerulean-blue: #2d66b9;
+$color-linear-secondary: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+$color-gray: #AEB6C1;
+$color-dark-bg: #2E323D;
+$color-stroke: #E6E6E6;
+$color-stroke-picture: rgba(#FFFFFF, 0.2);
+$color-default-black: #000000;
+$color-default-white: #ffffff;
+$color-whisper: #e6e6e6;
+
+//transition
+$trans-300: 300ms;

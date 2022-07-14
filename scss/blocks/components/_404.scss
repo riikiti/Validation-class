@@ -1,0 +1,42 @@
+.notfound {
+  display: flex;
+  justify-content: center;
+  padding-top: 131px;
+  padding-bottom: 191px;
+  width: 100%;
+  background-image: url("/img/bg/bg404.png");
+ // background-color: black;
+  background-size: cover;
+  @include to(1024px){
+    padding-top:20px;
+    padding-bottom: 49px;
+  }
+  &__content {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 365px;
+      line-height: 100%;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      @include to(1024px){
+        font-size: 212px;
+      }
+    }
+
+    h6 {
+      width: 354px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 145%;
+      color: #FFFFFF;
+    }
+  }
+
+}

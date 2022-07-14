@@ -1,0 +1,301 @@
+.customer {
+  // .customer__container
+  &__container {
+    display: flex;
+    padding: 90px 200px 100px 200px;
+    @include to(1280px){
+      padding: 40px 25px 60px 25px;
+    }
+    @include to(1024px){
+      flex-direction: column;
+    }
+    @include to(700px){
+      padding: 25px 25px 60px 25px;
+    }
+  }
+  &__container-supplier{
+    flex-direction: column;
+  }
+
+  &__button{
+
+    @include visible('false');
+    @include to(1024px){
+
+      @include visible('true');
+      margin-bottom: 30px;
+      &.button__max-content{
+        display: flex;
+        width: 100%;
+      }
+    }
+  }
+&__body{
+  display: flex;
+  @include to(1280px){
+    flex-direction: column;
+  }
+}
+&__header{
+  margin-bottom: 60px;
+  @include to(1280px){
+    margin-bottom: 40px;
+  }
+  @include to(600px){
+    margin-bottom: 30px;
+  }
+  & h1{
+    font-size: 43px;
+    line-height: 45px;
+    font-family: 'Roboto Condensed','Roboto',Arial,sans-serif;
+    @include to(700px){
+      font-size: 27px;
+      line-height: 30px;
+    }
+    & span{
+      display: block;
+    }
+  }
+}
+  // .customer__director
+  &__director {
+    flex: 3;
+    @include to(1280px){
+      flex: 1;
+    }
+
+  }
+  // .customer__name
+  &__name {
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 20px;
+    @include to(600px){
+      margin-bottom: 10px;
+    }
+  }
+
+  // .customer__scrap-container
+  &__scrap-container {
+    display: flex;
+    padding: 0 200px 100px 200px;
+    @include to(1450px){
+      padding: 0 125px 75px 125px;
+    }
+    @include to(1280px){
+      flex-direction: column;
+      padding: 0 25px 70px 25px;
+    }
+  }
+
+  // .customer__scrap-gost
+  &__scrap-gost {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 23px;
+    color: #000;
+    flex:1;
+    @include to(1280px){
+      flex:auto;
+    margin-bottom: 20px;
+    }
+    @include to(420px){
+      width: 75%;
+    }
+    @include to(350px){
+      width: 100%;
+    }
+  }
+
+  // .customer__scrap-list
+  &__scrap-list {
+    display: flex;
+    flex-direction: column;
+    flex:6;
+    @include to(1280px){
+      flex:auto;
+      width: 100%;
+    }
+  }
+
+  // .customer__post
+  &__post {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    color: #aeb6c1;
+    margin: 0;
+  }
+
+  // .customer__telephone
+  &__telephone {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #aeb6c1;
+    margin: 0;
+    @include to(600px){
+      margin-bottom: 20px;
+    }
+  }
+
+
+  // .customer__description
+  &__description {
+    flex: 2;
+    @include from(1599px){
+      min-width: 600px;
+      width: 100%;
+    }
+  }
+
+  // .customer__description-text
+  &__description-text {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
+    color: #000000;
+    margin: 0;
+    &:first-child {
+      margin-bottom: 20px;
+    }
+  }
+  &__contact {
+    background-color: #2e323d;
+    border-bottom: 1px solid #77787b;
+    padding: 80px 200px;
+    position: relative;
+    z-index: 99;
+    @include to(1424px){
+      padding:40px 25px;
+    }
+    &:after {
+      content: '';
+      background-image: url('/img/ui/modal_logo.svg');
+      background-size: cover;
+      background-position: center center;
+      height: 230px;
+      width: 140px;
+      position: absolute;
+      top: 0;
+      right: 200px;
+      @include to(1024px){
+        right: 0;
+        z-index: -1;
+        height: 146px;
+      }
+    }
+  }
+
+  &__contact-form {
+    display: flex;
+    flex-direction: column;
+    @include to(1024px){
+      width: 100%;
+      flex-direction: column;
+    }
+    & * {
+      flex: 1;
+    }
+    & > * + * {
+      width: 100%;
+      @include to(1024px){
+        margin-left: 0;
+      }
+    }
+  }
+  &__contact-title {
+    text-transform: uppercase;
+    color: #ffffff;
+    word-break: break-word;
+    & span {
+      display: inline-block;
+      color: #2864b2;
+    }
+  }
+  &__contact-you {
+  }
+}
+.contact-you {
+  @include to(1024px){
+   margin-top: 25px;
+  }
+  & .contact-you__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    color: #ffffff;
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
+  p{
+    color: white;
+  }
+}
+.card-scrap {
+  transition: 1s ease;
+  background-color: #ffffff;
+  min-height: 110px;
+  height: max-content;
+  padding:20px 0;
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 1px #E6E6E6;
+  display: flex;
+  align-items: center;
+  /*&:hover{
+    background: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+    box-shadow: 0 7px 16px rgba(45, 104, 184, 0.4);
+    transition: all 0.3s ease;
+    & .card-scrap_container h5{
+      color: white;
+    }
+    & .card-scrap_container h3{
+      color: white;
+    }
+  }*/
+  // .card__scrap-container
+  &_container {
+    display: flex;
+    flex: 0 0 100%;
+    padding: 0 30px;
+    justify-content: space-between;
+    align-items: center;
+    @include to(500px){
+      padding-right: 15px;
+      padding-left: 20px;
+    }
+    @include to(350px){
+      padding:0 10px;
+    }
+    & h4{
+      cursor: pointer;
+    }
+    & sup{
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 14px;
+      vertical-align: top;
+    }
+  }
+  // .card__certificate-link
+  &_link {
+    flex: 0 0 70%;
+    padding:0 10px 0 0;
+  }
+}
+
+.contact-us{
+  z-index: 1;
+}
+.form-customer{
+  display: flex;
+flex-direction: column;
+}
+.contact-you{
+  margin-right: 50px;
+  width: 539px;
+  @include to(1400px){
+    width: 100%;
+  }
+}

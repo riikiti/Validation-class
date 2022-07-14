@@ -1,0 +1,27 @@
+.tab-link {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.45;
+  color: $color-gray;
+
+  &.active {
+    color: $color-primary;
+  }
+
+  @include vp--1279 {
+    color: #AEB6C1;
+    padding: 9px 20px;
+    border: 1px solid #E6E6E6;
+
+    &.active {
+      background: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+      color: #FFFFFF;
+    }
+  }
+
+  @include vp--1023{
+    white-space: nowrap;
+  }
+}

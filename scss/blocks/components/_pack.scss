@@ -1,0 +1,157 @@
+.pack {
+  // .pack__container
+
+  &__container {
+    padding: 90px 200px 150px 200px;
+    @include to(1279px) {
+      padding: 40px 25px 70px 25px;
+    }
+
+  }
+
+  // .pack__header
+  &__header {
+    display: flex;
+    margin-bottom: 60px;
+    @include to(700px) {
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__button {
+    @include to(700px) {
+      &.button__max-content {
+        width: 100%;
+      }
+    }
+  }
+
+  // .pack__title
+  &__title {
+    flex: 0 0 70%;
+    font-size: 43px;
+    line-height: 45px;
+    @include to(700px) {
+      font-size: 27px;
+      line-height: 30px;
+      margin-bottom: 30px;
+    }
+
+    & span {
+      display: block;
+    }
+  }
+
+  // .pack__cards
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  // .pack__cards-item
+  &__cards-item {
+    &.card {
+      @include to(1279px) {
+        width: 50%;
+      }
+      @include to(700px) {
+        width: 100%;
+      }
+    }
+
+    & img {
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.information {
+  background-color: #2e323d;
+  position: relative;
+  color: #fff;
+  z-index: 10;
+
+  &:before {
+    content: "";
+    background-image: url(/img/ui/modal_logo.svg);
+    background-size: cover;
+    background-position: center center;
+    height: 339px;
+    width: 208px;
+    position: absolute;
+    top: 0;
+    left: 154px;
+    z-index: -1;
+    @include to(1279px) {
+      left: initial;
+      right: 0;
+
+    }
+
+  }
+
+  &__container {
+    padding: 80px 200px;
+    padding-left: 370px;
+    @include to(1279px) {
+      padding: 50px 25px;
+    }
+
+  }
+
+  // .information__block
+  &__block {
+    max-width: 720px;
+
+    &:not(:last-child) {
+      margin-bottom: 50px
+    }
+  }
+
+  // .information__title
+  &__title {
+    color: #fff;
+    max-width: 342px;
+    @include setfont('Inter',normal,600,28px,34px);
+  }
+  // .information__description
+  &__description {
+    @include setfont('Inter',normal,400,16px,24px);
+    margin-top: 30px;
+    & + & {
+      margin-top: 20px;
+    }
+  }
+
+  // .information__description-list
+  &__description-list {
+    list-style: none;
+    margin-top: 30px;
+
+    li {
+      margin-bottom: 20px;
+
+      & span {
+        display: flex;
+        align-items: flex-start;
+
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 5px;
+          height: 5px;
+          margin-right: 10px;
+          background-color: #2864b2;
+          margin-top: 5px;
+          flex: 0 0 5px;
+        }
+      }
+    }
+  }
+
+  // .information__description-item
+  &__description-item {
+  }
+}

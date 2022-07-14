@@ -1,0 +1,266 @@
+.cost {
+  margin-top: 40px;
+  margin-bottom: 150px;
+
+  & .col {
+    flex: 1;
+    padding-right: 40px;
+    @include to(1280px) {
+      display: none;
+    }
+  }
+
+  &__container {
+    padding: 0 200px;
+    display: flex;
+    @include to(1350px) {
+      padding: 0 150px;
+    }
+    @include to(1280px) {
+      padding: 0 25px;
+    }
+  }
+
+  .front-sections {
+    flex: 5;
+    @include to(1280px) {
+      flex: auto;
+      display: flex;
+    }
+  }
+
+  .front-sections .section {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 25px;
+  }
+
+  .front-sections .section.one {
+    width: 270px;
+    margin-left: 0px;
+  }
+
+  .front-sections .section.two {
+    width: 280px;
+  }
+
+  .front-sections .section.three {
+    width: 380px;
+  }
+
+  .front-sections .section .title {
+    display: block;
+    margin: 0px 0px 20px 0px;
+    padding: 7px 0px;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #5e6584;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .front-news .news-item {
+    margin: 15px 0px 0px 0px;
+  }
+
+  .front-news .news-item.first {
+    margin-top: 0px;
+  }
+
+  .front-news .news-item .news-title {
+    display: block;
+    margin: 0px 0px 5px 0px;
+    color: #3d3e45;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .front-news .news-item .news-date {
+    display: block;
+    font-size: 14px;
+    color: #787878;
+  }
+
+  .front-rates .rate-tabs {
+    margin: 0px 0px 25px 0px;
+  }
+
+  .front-rates .rate-tabs .rate-tab {
+    display: inline-block;
+    vertical-align: middle;
+    width: 120px;
+    height: 40px;
+    line-height: 38px;
+    color: #545454;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #888;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .front-rates .rate-tabs .rate-tab:hover {
+    border-color: #0d62c8;
+    color: #0d62c8;
+  }
+
+  .front-rates .rate-tabs .rate-tab.active {
+    border-color: #0d62c8;
+    background: #0d62c8;
+    color: #fff;
+  }
+
+  .front-rates .rate-values .rate-group {
+    margin: 0px;
+  }
+
+  .front-rates .rate-values .rate-group.last {
+    margin-bottom: 0px;
+  }
+
+  .front-rates .rate-values .rate-group .rate-row {
+    padding: 6px 0px;
+    border-bottom: 1px solid #9a9a9a;
+    font-size: 0px;
+    display: flex
+  }
+
+  .front-rates .rate-values .rate-group .rate-row .rate-direction {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    padding: 0px 5px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #2d2e34;
+  }
+
+  .front-rates .rate-values .rate-group .rate-row .rate-value {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+  }
+
+  .front-rates .rate-values .rate-group .rate-row .rate-change {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 11px;
+    margin-left: 3px;
+  }
+
+  .front-rates .rate-values .rate-group .rate-row .rate-change.up {
+    background: url('/img/ui/icon_currency_up.png') center center no-repeat;
+  }
+
+  .front-rates .rate-values .rate-group .rate-row .rate-change.down {
+    background: url('/img/ui/icon_currency_down.png') center center no-repeat;
+  }
+
+  .chart-rows .chart-row {
+    padding: 4px 0px;
+    border-bottom: 1px solid #9a9a9a;
+    font-size: 0px;
+  }
+
+  .chart-rows .chart-row .chart-metal {
+    display: inline-block;
+    vertical-align: middle;
+    width: 90px;
+    padding: 0px 5px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #2d2e34;
+  }
+
+  .chart-rows .chart-row .chart-value {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+  }
+
+  .chart-rows .chart-row .chart-change {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 11px;
+    margin-left: 5px;
+    text-align: center;
+  }
+
+  .chart-rows .chart-row .chart-change.up {
+    background: url('/img/ui/icon_currency_up.png') center center no-repeat;
+  }
+
+  .chart-rows .chart-row .chart-change.down {
+    background: url('/img/ui/icon_currency_down.png') center center no-repeat;
+  }
+
+  .chart-rows .chart-row .chart-diff {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    margin-left: 5px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .chart-rows .chart-row:hover {
+    background: #eee;
+    cursor: pointer;
+  }
+
+  .chart-graphs .chart-container {
+    display: block;
+    width: 370px;
+    height: 256px;
+  }
+
+  .chart-graphs .chart-container.hidden {
+    display: none;
+  }
+
+  .front-sections {
+    &::-webkit-scrollbar {
+      height:2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #2864B2;
+      width: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #E6E6E6;
+      height: 2px;
+    }
+
+    @include to(1280px) {
+      overflow-x: scroll;
+      width: 100%;
+      flex: 0 0 auto;
+      padding-bottom: 20px;
+      & .one {
+        flex: 0 0 270px;
+      }
+      & .two {
+        flex: 0 0 280px;
+      }
+      & .three {
+        flex: 0 0 380px;
+      }
+    }
+  }
+
+}

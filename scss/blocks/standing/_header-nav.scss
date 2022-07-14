@@ -1,0 +1,126 @@
+.navigation {
+  height: 163px;
+  background-color: #2864B2;
+  padding: 30px 200px 10px 200px;
+  overflow: hidden;
+  @include to(1280px) {
+    padding: 40px 25px 20px 25px;
+
+  }
+  @include to(1023px) {
+    height: 105px;
+    padding-top: 20px;
+  }
+  @include to(300px) {
+    padding: 15px 10px 15px 10px;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+
+  &:after {
+    content: "";
+    right: 200px;
+    top: 0;
+    @include to(1280px) {
+      right: 50px;
+    }
+    @include to(1023px) {
+      right: 25px;
+    }
+    @include to(425px) {
+      right: -12px;
+    }
+    @include to(360px) {
+      right: -20px;
+      width: 65px;
+    }
+    @include to(330px) {
+      display: none;
+    }
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100%;
+    background-image: url("/img/ui/pseudo-navigation.svg");
+    background-size: cover;
+    background-position: center center;
+  }
+
+  // .navigation__breadcrumb
+  &__breadcrumb {
+    padding-top: 10px;
+    @include to(1023px) {
+      padding-top: 0;
+    }
+    @include to(400px) {
+      overflow: hidden;
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+  }
+
+  // .navigation__breadcrumb-list
+  &__breadcrumb-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  //.navigation__title
+  &__title {
+    margin: 0;
+    color: #fff;
+    padding-bottom: 10px;
+    font-size: 64px;
+    line-height: 64px;
+    margin-top: auto;
+    @include to(1280px) {
+      font-size: 32px;
+      line-height: 32px;
+    }
+    @include to(450px) {
+      font-size: 20px;
+      line-height: 23px;
+    }
+  }
+  &-privacy {
+    & .navigation__title{
+      @include to(700px){
+        font-size: 15px;
+        line-height: 15px;
+      }
+    }
+  }
+  // .navigation__breadcrumb-item
+  &__breadcrumb-item {
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+    @include to(600px) {
+      font-size: 10px;
+      line-height: 15px;
+    }
+
+    &:not(:last-child)::after {
+      content: "";
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 30px;
+      @include to(375px) {
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 20px;
+      }
+      height: 1px;
+      background-color: #e3e3e3;
+      vertical-align: middle;
+    }
+  }
+
+  // .navigation__breadcrumb-link
+  &__breadcrumb-link {
+  }
+}

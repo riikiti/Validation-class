@@ -1,0 +1,272 @@
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+  $extmods: (eot: "?", svg: "");
+  $formats: (otf: "opentype", ttf: "truetype");
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    // font-display: auto;
+    src: $src;
+  }
+}
+
+
+// Миксины для унификации
+@mixin baseTitle() {
+  color: $color-base-1;
+  font-family: "Blacker Display", serif;
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 300;
+  margin: 0;
+  @include md-block {
+    font-size: 35px;
+  }
+  @media(max-width: 425px) {
+    font-size: 26px;
+    line-height: 30px;
+    &::before {
+      top: 15px;
+    }
+  }
+}
+@mixin baseSectionHeader() {
+  text-align: center;
+  position: relative;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  @media(max-width: 1024px) {
+    width: 85%;
+  }
+  @media(max-width: 580px) {
+    width: 100%;
+  }
+  @media(max-width: 425px) {
+    width: 100%;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 1px;
+    background-color: #9B9B9B;
+  }
+  & > * {
+    display: inline-block;
+    position: relative;
+    background-color: #fff;
+    padding: 0 40px;
+    box-sizing: content-box;
+    white-space: pre-line;
+    // width: 70%;
+    @media(max-width: 1024px) {
+      padding: 0 25px;
+    }
+    @media(max-width: 580px) {
+      width: 50%;
+      padding: 10px;
+    }
+    @media(max-width: 425px) {
+      width: 70%;
+      padding: 0 10px;
+    }
+  }
+}
+@mixin linkSimpleHover() {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #543019;
+    transform: scale(.25, 1);
+    transform-origin: left center;
+    will-change: transform;
+    transition: transform .6s cubic-bezier(0, 0, 0.12, 1);
+  }
+  &:hover {
+    &:after {
+      transform: scale(1, 1);
+    }
+  }
+}
+
+/* Миксин соотношения сторон */
+
+@mixin aspect-ratio($width,
+$height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  >.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Y center
+@mixin yCenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/* trs */
+
+@mixin trs {
+  transition: .3s ease-in-out;
+}
+
+@mixin hide {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+}
+
+@mixin show {
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  z-index: auto;
+}
+
+@mixin unlist {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+@mixin unlink {
+  text-decoration: none;
+  color: inherit
+}
+
+@mixin view-link {
+  font-family: Circe, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1.86px;
+  line-height: 18px;
+  text-transform: uppercase;
+  @include md-block {
+    font-size: 12px;
+  }
+  @include sm-block {
+    font-size: 11px;
+  }
+}
+
+
+@mixin bgImgBase($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+}
+
+@mixin from($min_width){
+  @media screen and (min-width: $min_width){
+    @content;
+  }
+}
+
+@mixin to($max_width){
+  @media screen and (max-width: $max_width){
+    @content;
+  }
+}
+
+@mixin from-to($min_width, $max_width){
+  @media screen and (min-width: $min_width) and (max-width: $max_width){
+    @content;
+  }
+}
+@mixin vp--1599 {
+  @media (max-width: 1599px) {
+    @content;
+  }
+}
+@mixin vp--1279 {
+  @media (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin vp--1023 {
+  @media (max-width: 1023px) {
+    @content;
+  }
+}
+
+
+@mixin vp--767 {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+
+@mixin visible($visability:false){
+ @if($visability=="false"){
+   display: none;
+   opacity: 0;
+   visibility: hidden;
+ }
+ @else{
+   display: block;
+   opacity: 1;
+   visibility: visible;
+  }
+}
+@mixin textelepsis($number){
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -ms-line-clamp: $number;
+  -webkit-line-clamp: $number;
+  line-clamp: $number;
+  overflow:hidden;
+  display: -webkit-box;
+  display: box;
+  word-wrap: break-word;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
+@mixin setfont($font,$fontstyle,$fontweight,$fontsize,$lineheight){
+  font-family: $font,Arial,sans-serif;
+  font-style: $fontstyle;
+  font-weight: $fontweight;
+  font-size: $fontsize;
+  line-height: $lineheight;
+}

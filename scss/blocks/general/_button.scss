@@ -1,0 +1,129 @@
+.large-primary {
+  width: fit-content;
+  padding: 15px 20px;
+  background: $color-linear-secondary;
+  display: flex;
+  align-items: center;
+  font-family: $font-roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  text-transform: uppercase;
+  color: $color-default-white;
+  cursor: pointer;
+
+  svg {
+    margin-left: 5px;
+    width: 16px;
+    height: 17px;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: 0 7px 16px $color-cerulean-blue;
+  }
+
+  &:disabled:not(:hover),
+  &:disabled:not(:focus),
+  &:disabled:not(:active) {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+}
+
+.large-secondary {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.25;
+  color: $color-primary;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  z-index: 1;
+
+  svg {
+    width: 14px;
+    height: 11px;
+    margin-left: 5px;
+    stroke: #2864B2;
+  }
+
+  img {
+    transform: scale(0);
+    transform-origin: center;
+    position: absolute;
+    z-index: -1;
+    top: -52px;
+    max-width: 125px;
+    max-height: 125px;
+    object-fit: cover;
+    opacity: 0;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &--white {
+    color: $color-default-white;
+
+    svg {
+      stroke: $color-default-white;
+    }
+  }
+
+  @include vp--1023 {
+    img {
+      display: none;
+    }
+  }
+}
+
+.slider-round {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border: 1px solid $color-primary;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0);
+
+  svg {
+    width: 19px;
+    height: 16px;
+    stroke: $color-primary;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    border: 1px solid lighten($color-primary, 10%);
+
+    svg {
+      stroke: lighten($color-primary, 10%)
+    }
+  }
+
+  //&:disabled {
+  //  border-color: $color-default-white;
+  //  svg{
+  //    stroke: $color-default-white;
+  //  }
+  //}
+
+  &--next{
+    svg{
+      transform: rotate(180deg);
+    }
+  }
+}

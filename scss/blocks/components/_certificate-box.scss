@@ -1,0 +1,32 @@
+.certificate-box {
+  padding-bottom: 150px;
+
+  @include vp--1599{
+    padding-bottom: 100px;
+  }
+
+  @include vp--1279{
+    padding-bottom: 70px;
+  }
+
+  @include vp--767{
+    padding-bottom: 60px;
+  }
+}
+
+.certificate-box__text {
+  max-width: 50%;
+  margin-bottom: 40px;
+
+  @include vp--1023{
+    max-width: unset;
+  }
+}
+
+.certificate-box__list {
+
+}
+
+.certificate-box__item {
+
+}

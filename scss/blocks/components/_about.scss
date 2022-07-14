@@ -1,0 +1,144 @@
+.about {
+  &__header {
+    padding-top: 90px;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-bottom: 90px;
+    @include to(1279px) {
+      padding-top: 20px;
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-bottom: 40px;
+    }
+    background-image: url('/img/about-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 487px;
+    @include to(1279px) {
+      height: max-content;
+    }
+  }
+
+  &__title {
+    font-family:"Roboto Condensed","Roboto",sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43px;
+    line-height: 45px;
+    text-transform: uppercase;
+    color: #ffffff;
+    max-width: 790px;
+    @include to(500px){
+      font-size: 27px;
+      line-height: 30px;
+      }
+  }
+  &__description {
+    font-family: 'Inter',Arial,sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #ffffff;
+    max-width: 740px;
+    margin-top: 40px;
+    @include to(700px){
+      margin-top: 30px;
+    }
+  }
+
+  &__body {
+    padding-top: 60px;
+    padding-left: 200px;
+    margin-bottom: 150px;
+    @include to(1279px) {
+      padding-top: 20px;
+      padding-left: 25px;
+      margin-bottom: 70px;
+    }
+  }
+
+  &__body-container {
+    max-width: 740px;
+    padding-right: 10px;
+  }
+
+  &__content {
+  }
+
+  &__paragraph {
+    margin-bottom: 50px;
+    @include to(500px) {
+      margin-bottom: 40px;
+    }
+
+    & > * + * {
+      margin-top: 20px;
+      @include to(500px) {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  &__text {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+  }
+
+  &__parts {
+    max-width: 500px;
+    margin-bottom: 50px;
+  }
+
+  &__parts-title {
+    font-family: 'Inter',Arial,sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #000000;
+    margin-bottom: 30px;
+    @include to(700px){
+      margin-bottom: 25px;
+    }
+  }
+
+  &__parts-list {
+    list-style: none;
+  }
+
+  &__parts-item {
+    display: inline-flex;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+      @include to(500px) {
+        margin-bottom: 15px;
+      }
+    }
+
+    & span {
+      display: flex;
+      align-items: flex-start;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        margin-right: 5px;
+        background-color: #2864b2;
+        margin-top: 4px;
+        flex: 0 0 5px;
+      }
+    }
+  }
+}
+.about-w{
+  width: 560px;
+  @include to(700px){
+    width: 100%;
+  }
+}

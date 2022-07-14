@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Title</title>
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/scss/main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Condensed&family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<header class="header">
+    <div class="header__container">
+        <div class="header__body header__body-desktop">
+            <div class="header__body-inner">
+                <a href="/index.html" class="header__logo">
+                    <img src="/img/logos/logo.svg" alt="Орион"/>
+                </a>
+                <div class="header__information">
+                    <p class="header__adress">
+                        188&nbsp;304, Ленинградская область, г.&nbsp;Гатчина,
+                        ул.&nbsp;Солодухина, д.&nbsp;2а, строение&nbsp;8
+                    </p>
+                    <div class="header__telephone-list">
+                        <a href="tel:+78124384091" class="header__telephone-item"
+                        >+7 (812) 438 40 91</a
+                        >
+                        <a href="tel:+78124384092" class="header__telephone-item"
+                        >+7 (812) 438 40 92</a
+                        >
+                        <a href="tel:+74991103871" class="header__telephone-item"
+                        >+7 (499) 110 38 71</a
+                        >
+                    </div>
+                    <div class="header__mail-list">
+                        <a
+                                href="mailto:orion_gatchina@mail.ru"
+                                class="header__mail-item"
+                        >
+                            orion_gatchina@mail.ru
+                        </a>
+                        <a href="mailto:orion@orion-nm.ru" class="header__mail-item">
+                            orion@orion-nm.ru
+                        </a>
+                    </div>
+                    <button class="header__request-btn">
+                        <span>Оставить заявку</span>
+                    </button>
+                </div>
+                <div class="header__controls">
+                    <div class="header__search">
+                        <button class="header__search-btn">
+                            <img src="./img/ui/search.svg" alt="Поиск"/>
+                        </button>
+                    </div>
+                    <a href="" class="header__language">EN</a>
+                </div>
+            </div>
+            <div class="header__body-bottom">
+                <nav class="header__menu">
+                    <ul class="header__menu-list">
+                        <li class="header__menu-item">
+                            <a href="/products.html" class="header__menu-link">Продукция</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a href="/formandpacks.html" class="header__menu-link">Форма и упаковка</a>
+                            <ul class="header__menu-submenu__list">
+                                <li class="header__menu-submenu__item">
+                                    <a href="/form.html" class="header__menu-link">Форма</a>
+                                </li>
+                                <li class="header__menu-submenu__item">
+                                    <a href="/pack.html" class="header__menu-link">Упаковка</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header__menu-item">
+                            <a href="/certificate.html" class="header__menu-link">Сертификаты</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a href="#" class="header__menu-link">О производителе</a>
+                            <ul class="header__menu-submenu__list">
+                                <li class="header__menu-submenu__item">
+                                    <a href="/about.html" class="header__menu-link">О компании</a>
+                                </li>
+                                <li class="header__menu-submenu__item">
+                                    <a href="/history.html" class="header__menu-link"
+                                    >История предприятия</a
+                                    >
+                                </li>
+                                <li class="header__menu-submenu__item">
+                                    <a href="/partners.html" class="header__menu-link">Партнеры</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header__menu-item">
+                            <a href="/customer.html" class="header__menu-link">Клиентам</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a href="/supplier.html" class="header__menu-link">Поставщикам</a>
+                        </li>
+                        <li class="header__menu-item">
+                            <a href="#" class="header__menu-link">Пресс-центр</a>
+                            <ul class="header__menu-submenu__list">
+                                <li class="header__menu-submenu__item">
+                                    <a href="/news.html" class="header__menu-link">Новости</a>
+                                </li>
+                                <li class="header__menu-submenu__item">
+                                    <a href="/gallery-video.html" class="header__menu-link">Галерея</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header__menu-item">
+                            <a href="/contacts.html" class="header__menu-link">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="header__body header__body-mobile">
+            <div class="header__body_container">
+                <a href="/index.html" class="header__logo">
+                    <img src="/img/logos/logo.svg" alt="Орион"/>
+                </a>
+                <div class="header__block">
+                    <div class="header__menu_search">
+                        <button class="header__search-btn">
+                            <img src="./img/ui/search.svg" alt="Поиск"/>
+                        </button>
+                    </div>
+                    <div class="header__menu_icon-container">
+                        <div class="header__menu_icon icon-menu">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__block_content ">
+                    <aside class="header__block_aside">
+                        <nav class="header__menu">
+                            <ul class="header__menu-list">
+                                <li class="header__menu-item">
+                                    <a href="/products.html" class="header__menu-link">Продукция</a>
+                                </li>
+                                <li class="header__menu-item isactive">
+                                    <span class="header__menu-link">Форма и упаковка</span>
+                                    <ul class="header__menu-submenu__list">
+                                        <li class="header__menu-submenu__item">
+                                            <a href="/form.html" class="header__menu-link">Форма</a>
+                                        </li>
+                                        <li class="header__menu-submenu__item">
+                                            <a href="/pack.html" class="header__menu-link">Упаковка</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="header__menu-item">
+                                    <a href="/certificate.html" class="header__menu-link">Сертификаты</a>
+                                </li>
+                                <li class="header__menu-item">
+                                    <span class="header__menu-link">О производителе</span>
+                                    <ul class="header__menu-submenu__list">
+                                        <li class="header__menu-submenu__item">
+                                            <a href="/about.html" class="header__menu-link">О компании</a>
+                                        </li>
+                                        <li class="header__menu-submenu__item">
+                                            <a href="/history.html" class="header__menu-link"
+                                            >История предприятия</a
+                                            >
+                                        </li>
+                                        <li class="header__menu-submenu__item">
+                                            <a href="/partners.html" class="header__menu-link">Партнеры</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="header__menu-item">
+                                    <a href="/customer.html" class="header__menu-link">Клиентам</a>
+                                </li>
+                                <li class="header__menu-item">
+                                    <a href="/supplier.html" class="header__menu-link">Поставщикам</a>
+                                </li>
+                                <li class="header__menu-item">
+                                    <span class="header__menu-link">Пресс-центр</span>
+                                    <ul class="header__menu-submenu__list">
+                                        <li class="header__menu-submenu__item">
+                                            <a href="/news.html" class="header__menu-link">Новости</a>
+                                        </li>
+                                        <li class="header__menu-submenu__item">
+                                            <a href="/gallery-video.html" class="header__menu-link">Галерея</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="header__menu-item">
+                                    <a href="/contacts.html" class="header__menu-link">Контакты</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <a href="#" class="header__language">EN</a>
+                    </aside>
+                    <div class="header__information">
+                        <p class="header__adress">
+                            188&nbsp;304, Ленинградская область, г.&nbsp;Гатчина,
+                            ул.&nbsp;Солодухина, д.&nbsp;2а, строение&nbsp;8
+                        </p>
+                        <div class="header__telephone-list">
+                            <a href="tel:+78124384091" class="header__telephone-item"
+                            >+7 (812) 438 40 91</a
+                            >
+                            <a href="tel:+78124384092" class="header__telephone-item"
+                            >+7 (812) 438 40 92</a
+                            >
+                            <a href="tel:+74991103871" class="header__telephone-item"
+                            >+7 (499) 110 38 71</a
+                            >
+                        </div>
+                        <div class="header__mail-list">
+                            <a
+                                    href="mailto:orion_gatchina@mail.ru"
+                                    class="header__mail-item"
+                            >
+                                orion_gatchina@mail.ru
+                            </a>
+                            <a href="mailto:orion@orion-nm.ru" class="header__mail-item">
+                                orion@orion-nm.ru
+                            </a>
+                        </div>
+                        <button class="header__request-btn">
+                            <span>Оставить заявку</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="navigation">
+        <nav class="navigation__breadcrumb">
+            <ul class="navigation__breadcrumb-list">
+                <li class="navigation__breadcrumb-item">
+                    <a href="" class="navigation__breadcrumb-link">Главная</a>
+                </li>
+                <li class="navigation__breadcrumb-item">
+                    <a href="" class="navigation__breadcrumb-link">Продукция</a>
+                </li>
+                <li class="navigation__breadcrumb-item">
+                    <a href="" class="navigation__breadcrumb-link">Лигатуры</a>
+                </li>
+            </ul>
+        </nav>
+        <h1 class="navigation__title">Продукция</h1>
+    </div>
+    <div class="products">
+        <div class="tabs-sections">
+            <ul class="tabs-list">
+                <li><span>Лигатуры</span></li>
+                <li class="selected"><span>Брикетированные лигатуры</span></li>
+                <li><span>Алюминиевые сплавы</span></li>
+                <li><span>Магниевые сплавы и лигатуры</span></li>
+                <li><span>Никелевые сплавы и лигатуры</span></li>
+                <li><span>Медные сплавы</span></li>
+                <li><span>Скандийсодержащие сплавы и лигатуры</span></li>
+                <li><span>Ферросплавы</span></li>
+            </ul>
+        </div>
+        <div class="title">
+            <div class="title__wrap">
+                <h2>
+                    Лигатура алюминий-
+                </h2>
+                <span>марганец</span>
+            </div>
+            <div class="title__helper">
+                <div class="order">
+                    <span>Заказать</span>
+                </div>
+                <div class="discover">
+                    <span>Узнать стоимость</span>
+                </div>
+            </div>
+        </div>
+        <aside class="aside-wrap">
+            <ul class="detail-aside">
+                <li class="detail-aside__above"><a href="#">Алюминий<sup>Al</sup></a></li>
+                <li><a href="#">Литий</a></li>
+                <li class="detail-aside__selected"><a href="#">Марганец</a></li>
+                <li><a href="#">Хром</a></li>
+                <li><a href="#">Скандий</a></li>
+                <li><a href="#">Медь</a></li>
+                <li><a href="#">Цирконий</a></li>
+                <li><a href="#">Титан</a></li>
+                <li><a href="#">Титан-Бор</a></li>
+                <li><a href="#">Стронций</a></li>
+                <li><a href="#">Железо</a></li>
+                <li><a href="#">Никель</a></li>
+                <li class="detail-aside__above"><a href="#">Магний<sup>Mg</sup></a></li>
+                <li class="detail-aside__above"><a href="#">Никель<sup>Ni</sup></a></li>
+                <li><a href="#">Вольфрам</a></li>
+                <li><a href="#">Магний</a></li>
+                <li class="detail-aside__above"><a href="#">Медь<sup>Cu</sup></a></li>
+            </ul>
+        </aside>
+        <div class="img-wrap swiper swipe-details">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide-details"><img src="/img/detail/mar_left.png" alt="mar"></div>
+                <div class="swiper-slide slide-details"><img src="/img/detail/mar_right.png" alt="mar"></div>
+            </div>
+            <div class="swiper-scrollbar"></div>
+        </div>
+        <section class="detail">
+            <!--1 type -->
+            <div class="detail__table-wrap">
+                <h3>Основные наименования выпускаемой продукции</h3>
+                <div class="detail__table-wrap__first-type-table-wrap">
+
+                    <table class="detail__table-wrap__first-type-table-wrap__first-type-table">
+                        <tr class="table-title">
+                            <th class="">Марка</th>
+                            <th>Размер</th>
+                            <th>Состав</th>
+                            <th>Маркировка</th>
+                            <th>Стандарт</th>
+                        </tr>
+                        <tr>
+                            <td><h5>Fe80F20</h5></td>
+                            <td>Диаметр 35,70,90 мм</td>
+                            <td>Fe 80%, F 20%</td>
+                            <td>Полоса зеленая</td>
+                            <td>ТУ Заказчика</td>
+                        </tr>
+                        <tr>
+                            <td><h5>Cr80F20</h5></td>
+                            <td>Диаметр 35,70,90 мм</td>
+                            <td>Cr 80%, F 20%</td>
+                            <td>Полоса синяя</td>
+                            <td>ТУ Заказчика</td>
+                        </tr>
+                        <tr>
+                            <td><h5>Ti80F20</h5></td>
+                            <td>Диаметр 35,70,90 мм</td>
+                            <td>Ti 80%, F 20%</td>
+                            <td>Полоса красная</td>
+                            <td>ТУ Заказчика</td>
+                        </tr>
+
+                    </table>
+                </div>
+                <ul class="under-table">
+                    <li><span>Примеси, изменение химсостава - по согласованию сторон.</span>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="detail__list-small">
+                <h4>Преимущества заказа
+                    легирующих таблеток
+                    в ООО «Орион - Спецсплав - Гатчина»</h4>
+                <ul>
+                    <li><span>Большой опыт производства, отлаженный технологический процесс.</span></li>
+                    <li><span>Широкий спектр выпускаемых брикетированных лигатур разных диаметров.</span></li>
+                    <li><span>Четкое исполнение своих обязательств.</span></li>
+                    <li><span>Удобный алгоритм оформления заказов.</span></li>
+                </ul>
+            </div>
+            <div class="detail__list-large">
+                <h4>Основываясь на многолетнем опыте потребителей, можно выделить следующие основные преимущества
+                    применения легирующих таблеток</h4>
+                <ul>
+                    <li><span>По сравнению с лигатурами низкой концентрации, стоимость основного компонента в легирующих таблетках, как правило, ниже.</span>
+                    </li>
+                    <li><span>Удобная форма и упаковка способствуют точной дозировке легирующего элемента.</span>
+                    </li>
+                    <li><span>Введение легирующих таблеток не приводит к понижению температуры расплава.</span></li>
+                    <li><span>Более высокая концентрация легирующего элемента снижает расходы по хранению и транспортировке.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="detail__description">
+                <h4>Описание</h4>
+                <p>
+                    Легирующие таблетки (брикетированная лигатура), наряду с лигатурами и непрессованными порошками,
+                    применяются с целью введения в расплав определенных химических элементов. Как правило,
+                    брикетированная лигатура применяется в производстве различных алюминиевых сплавов
+                    и не распространяется на сплавы меди, никеля и некоторых других металлов.
+                </p>
+                <p>
+                    Легирующие таблетки производятся прессованием соответствующих металлических порошков
+                    с добавлением специального негигроскопичного легкоплавкого флюса и/или алюминиевого порошка
+                    в разных пропорциях (от 75% до 100%). Они имеют цилиндрическую форму, могут различаться по весу
+                    и диаметру.
+                </p>
+                <p>
+                    Традиционно прессованные брикеты лигатур упаковываются в виде обернутых алюминиевой фольгой
+                    пачек, содержащих несколько единиц продукции, с последующей укладкой в картонные коробки
+                    на паллетах. Таблетки малого веса/диаметра упаковываются в бумажные мешки или биг-беги. Для
+                    удобства в обращении с данным сырьем на производстве и во избежание случайных ошибок при
+                    дозировке в определении принадлежности относительно похожих друг на друга таблеток к тому или
+                    иному легирующему материалу, каждой из них присвоена соответствующая цветовая маркировка (для
+                    таблеток на основе Fe — зеленый цвет, на основе Ti — красный цвет, на основе Cr — синий и т.д).
+                </p>
+            </div>
+
+        </section>
+        <button class="catalog-mobile-btn">
+            <span>Продукция</span>
+        </button>
+
+    </div>
+    </div>
+    <div class="mobile-catalog ">
+        <div class="close-catalog">
+            <img class="modalClose " src="/img/ui/black-close.svg" alt="close">
+        </div>
+        <ul>
+            <li>
+                <div class="catalog-item">
+                    <div class="catalog-item__info"><p>Лигатуры</p> <span class="accordion-btn">Развернуть</span></div>
+                    <div class="aside-wrap ">
+                        <ul class="detail-aside">
+                            <li class="detail-aside__above"><a href="#">Алюминий<sup>Al</sup></a></li>
+                            <li><a href="#">Литий</a></li>
+                            <li class="detail-aside__selected"><a href="#">Марганец</a></li>
+                            <li><a href="#">Хром</a></li>
+                            <li><a href="#">Скандий</a></li>
+                            <li><a href="#">Медь</a></li>
+                            <li><a href="#">Цирконий</a></li>
+                            <li><a href="#">Титан</a></li>
+                            <li><a href="#">Титан-Бор</a></li>
+                            <li><a href="#">Стронций</a></li>
+                            <li><a href="#">Железо</a></li>
+                            <li><a href="#">Никель</a></li>
+                            <li class="detail-aside__above"><a href="#">Магний<sup>Mg</sup></a></li>
+                            <li class="detail-aside__above"><a href="#">Никель<sup>Ni</sup></a></li>
+                            <li><a href="#">Вольфрам</a></li>
+                            <li><a href="#">Магний</a></li>
+                            <li class="detail-aside__above"><a href="#">Медь<sup>Cu</sup></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="catalog-item">
+                    <div class="catalog-item__info"><p>Лигатуры</p> <span class="accordion-btn">Развернуть</span></div>
+                    <div class="aside-wrap ">
+                        <ul class="detail-aside">
+                            <li class="detail-aside__above"><a href="#">Алюминий<sup>Al</sup></a></li>
+                            <li><a href="#">Литий</a></li>
+                            <li class="detail-aside__selected"><a href="#">Марганец</a></li>
+                            <li><a href="#">Хром</a></li>
+                            <li><a href="#">Скандий</a></li>
+                            <li><a href="#">Медь</a></li>
+                            <li><a href="#">Цирконий</a></li>
+                            <li><a href="#">Титан</a></li>
+                            <li><a href="#">Титан-Бор</a></li>
+                            <li><a href="#">Стронций</a></li>
+                            <li><a href="#">Железо</a></li>
+                            <li><a href="#">Никель</a></li>
+                            <li class="detail-aside__above"><a href="#">Магний<sup>Mg</sup></a></li>
+                            <li class="detail-aside__above"><a href="#">Никель<sup>Ni</sup></a></li>
+                            <li><a href="#">Вольфрам</a></li>
+                            <li><a href="#">Магний</a></li>
+                            <li class="detail-aside__above"><a href="#">Медь<sup>Cu</sup></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</main>
+<footer class="footer">
+    <div class="footer__content">
+        <a class="f-logo" href="/index.html"
+        ><img src="/img/logos/logo_footer.svg" alt="footer-logo"
+        /></a>
+        <div class="copy">
+            <span class="f-copy">&copy;</span>
+            <p>2021</p>
+        </div>
+        <nav class="f-navigation">
+            <ul>
+
+                <li><a href="#">Сотрудничать с нами</a></li>
+                <li><a href="#">Карта сайта</a></li>
+                <li class="f-other-links">
+                    <a href="https://vk.com/"><img src="/img/ui/vk.svg"/></a
+                    ><a href="https://ru-ru.facebook.com/"
+                ><img src="/img/ui/fb.svg"
+                /></a>
+                </li>
+                <li><a href="#">Политика конфиденциальности</a></li>
+            </ul>
+        </nav>
+        <a class="cake" href="https://cake.ru/">Разработка сайта cake.ru</a>
+    </div>
+</footer>
+<script src="/js/jqery.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,207 @@
+.orion-box {
+  position: relative;
+  border-top: 1px solid $color-default-black;
+  overflow: hidden;
+  //min-height: 900px;
+  padding-top: 100px;
+  display: flex;
+  align-items: stretch;
+
+  .container {
+    margin-top: auto;
+  }
+
+  @include vp--1599 {
+    //min-height: 1000px;
+    padding-top: 10px;
+  }
+
+  @include vp--1023 {
+    padding-top: 0;
+  }
+}
+
+.orion-box__media {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  -webkit-filter: brightness(40%);
+  filter: brightness(40%);
+
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 1;
+    @media (min-aspect-ratio: 16/9) {
+
+      /* height = 100 * (9 / 16) = 56.25 */
+      height: 56.25vw;
+
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      /* width = 100 / (9 / 16) = 177.777777 */
+      width: 177.78vh;
+    }
+  }
+}
+
+.orion-box__content {
+  display: grid;
+  grid-template-rows: auto min-content min-content;
+  grid-auto-rows: min-content;
+  grid-template-areas: "accent accent accent ... link" "accent accent accent one two" "three four five six seven";
+  grid-template-columns: repeat(5, 1fr);
+
+  @include vp--1599 {
+    grid-template-areas: "accent accent  ... link" "one two three four" " five six seven ...";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: min-content min-content min-content;
+  }
+  @include vp--1279 {
+    grid-template-areas: none;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include vp--1023 {
+    display: block;
+    margin-left: -25px;
+    margin-right: -25px;
+  }
+}
+
+.orion-box__accent {
+  grid-area: accent;
+
+  .large-secondary {
+    display: none;
+  }
+
+  &.ui-card-orion {
+    height: 60vh;
+  }
+
+
+  @include vp--1599 {
+    &.ui-card-orion {
+      height: 35vh;
+    }
+  }
+  @include vp--1279 {
+    grid-area: unset;
+    &.ui-card-orion {
+      height: 370px;
+    }
+  }
+
+  @include vp--1023 {
+    height: auto;
+    padding: 40px 25px;
+    margin-bottom: 25px;
+    .large-secondary {
+      display: block;
+      margin-bottom: 30px;
+
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+.orion-box__large-secondary {
+  grid-area: link;
+  @include vp--1279 {
+    grid-area: unset;
+  }
+
+  @include vp--1023 {
+    display: none;
+  }
+}
+
+.orion-box__card {
+  &[data-card="1"] {
+    grid-area: one;
+    align-self: flex-end;
+  }
+
+  &[data-card="2"] {
+    grid-area: two;
+    align-self: flex-end;
+  }
+
+  &[data-card="3"] {
+    grid-area: three;
+  }
+
+  &[data-card="4"] {
+    grid-area: four;
+  }
+
+  &[data-card="5"] {
+    grid-area: five;
+  }
+
+  &[data-card="6"] {
+    grid-area: six;
+  }
+
+  &[data-card="7"] {
+    grid-area: seven;
+  }
+
+  @include vp--1279 {
+    &[data-card="1"],
+    &[data-card="2"],
+    &[data-card="3"],
+    &[data-card="4"],
+    &[data-card="5"],
+    &[data-card="6"],
+    &[data-card="7"] {
+      grid-area: unset;
+    }
+  }
+  @include vp--1023 {
+    display: block;
+    height: auto;
+    border: none;
+    padding: 25px;
+    max-width: 75%;
+  }
+}
+
+
+.orion-box__large-secondary {
+  margin-top: 40px;
+  align-self: flex-start;
+  justify-self: flex-end;
+
+  @include vp--1279 {
+    align-self: flex-start;
+    justify-self: flex-end;
+  }
+}

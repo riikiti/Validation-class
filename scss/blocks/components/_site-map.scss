@@ -1,0 +1,150 @@
+.sitemap {
+  // .sitemap__block
+  &__block {
+    display: flex;
+    flex-direction: column;
+    & .sitemap__column{
+      &>.sitemap__link+.sitemap__link{
+       // margin-top: 15px;
+      }
+    }
+  }
+
+  &__container {
+    padding: 90px 200px 150px 200px;
+    max-width: calc(900px + 400px);
+    @include to(1280px) {
+      padding: 20px 25px 80px 25px;
+    }
+    @include to(700px) {
+      max-width: 100%;
+    }
+  }
+
+  &__subtitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 125%;
+  }
+
+  // .sitemap__link
+  &__link {
+    margin-bottom: 60px;
+    width: 223px;
+    @include to(700px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  // .sitemap__title
+  &__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 37px;
+    line-height: 117%;
+    margin-bottom: 20px;
+  }
+
+  // .sitemap__row
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include to(700px) {
+      grid-template-columns: 1fr ;
+     // flex-direction: column;
+      margin-bottom: 50px;
+    }
+    margin-bottom: 100px;
+    & > .sitemap__column {
+      flex: 1;
+      &:last-child{
+        //margin-top: 30px;
+      }
+      & > * + * {
+        margin-top: 60px;
+        @include to(700px) {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+
+  // .sitemap__column
+  &__column {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  &__subtitle-gallery {
+    margin-top: 20px;
+  }
+
+  // .sitemap__blocks
+  &__blocks {
+
+    display: flex;
+    @include to(700px) {
+      flex-direction: column;
+    }
+    flex-wrap: wrap;
+
+    & > .sitemap__block {
+      flex: 0 0 50%;
+      &:last-child {
+
+        & .sitemap__title {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 37px;
+          line-height: 117%;
+          margin-bottom: 0;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 100px;
+        @include to(700px){
+          margin-bottom: 50px;
+        }
+      }
+      &:nth-last-child(2){
+        @include to(700px){
+          margin-bottom: 0;
+        }
+      }
+      & .sitemap__column {
+        & > * + * {
+          margin-top: 5px;
+        }
+
+        & > h4 {
+          margin-bottom: 10px;
+        }
+
+      }
+    }
+  }
+}
+
+.low-case-li{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.low-li{
+ & a{
+    margin-bottom: 5px;
+  }
+}
+.low-title{
+  width: 100%;
+  margin: 0;
+}

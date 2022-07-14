@@ -1,0 +1,159 @@
+//Бахнем сюда стили кнопок,тайтлов и тп
+.button {
+  &__type {
+    &__download {
+      & svg {
+        path {
+          &:nth-child(1) {
+            fill: #2864B2;
+          }
+        }
+
+        & > *:not(rect) {
+          stroke: #2864B2;
+        }
+
+        rect {
+          fill: #2864B2;
+        }
+      }
+
+      &:hover {
+        & svg {
+          path {
+            &:nth-child(1) {
+              fill: #fff;
+            }
+          }
+
+          & > *:not(rect) {
+            stroke: #fff;
+          }
+
+          rect {
+            fill: #fff;
+          }
+        }
+      }
+    }
+
+    &__primary {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 20px;
+      background: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+      width: 134px;
+      height: 47px;
+      color: #fff;
+
+      & span {
+        display: flex;
+
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 12px;
+          height: 17px;
+          margin-left: 5px;
+          background-image: url(/img/ui/arrow3h.svg);
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        @include trs();
+        box-shadow: 0 7px 16px rgba(45, 104, 184, 0.4);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+
+    &__secondary {
+      font-family: 'Inter', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 125%;
+      color: #2864B2;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+
+    &__text {
+      font-family: 'Roboto Condensed', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: #2864B2;
+
+      & span {
+        display: flex;
+
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 12px;
+          height: 17px;
+          margin-left: 5px;
+          background-image: url(/img/ui/arrow-req.svg);
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+
+        &:hover {
+          background: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+      }
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+    &__search{
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & *{
+        pointer-events: none;
+      }
+      & span{
+        height: 100%;
+      }
+      & svg{
+        width: 20px;
+        height: 20px;
+        &  *{
+          fill:#FFFFFF;
+        }
+      }
+    }
+    &__link {
+      color:#2864B2;
+    }
+  }
+
+  &__max-content {
+    width: max-content;
+  }
+}

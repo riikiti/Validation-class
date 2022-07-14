@@ -1,0 +1,177 @@
+.title {
+  &--1 {
+    font-family: $font-roboto-condensed;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 64px;
+    text-transform: uppercase;
+    color: $color-default-black;
+
+    span {
+      color: $color-primary;
+    }
+
+    @include vp--1279 {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  &--2 {
+    font-family: $font-roboto-condensed;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 43px;
+    line-height: 43px;
+    text-transform: uppercase;
+    color: $color-default-black;
+
+    & span {
+      color: $color-primary;
+    }
+
+    @include vp--1279 {
+      font-size: 27px;
+      line-height: 32px;
+    }
+  }
+
+  &--3 {
+    font-family: $font-inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 37px;
+    line-height: 43px;
+    color: $color-default-black;
+
+    @include vp--1279 {
+      font-size: 27px;
+      line-height: 32px;
+    }
+  }
+
+  &--4 {
+    font-family: $font-inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
+    color: $color-default-black;
+
+    @include vp--1279 {
+      font-size: 27px;
+      line-height: 32px;
+    }
+  }
+
+  &--5 {
+    font-family: $font-inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: $color-default-black;
+  }
+
+  &--white {
+    color: $color-default-white;
+  }
+}
+
+.text {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $color-default-black;
+
+  &--big {
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  &--small {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  &--gray {
+    color: $color-gray;
+  }
+}
+
+.text-button {
+  font-family: $font-roboto;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+  color: $color-default-black;
+}
+
+.text-link {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.45;
+  color: $color-primary;
+}
+
+.caption {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 1.5;
+  color: $color-default-black;
+
+  &--pale {
+    color: $color-gray;
+  }
+}
+
+.fraction {
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $color-gray;
+}
+
+.scrollbar {
+  position: relative;
+  height: 1px;
+  background-color: $color-whisper;
+  margin-bottom: 10px;
+}
+
+.scrollbar__inner {
+  background-color: $color-cerulean-blue;
+  height: 1px;
+}
+
+.controls-slider {
+  display: flex;
+  align-items: center;
+  padding-right: 200px;
+  padding-left: 200px;
+
+  @include vp--1279 {
+    padding: 0 25px;
+  }
+}
+
+.controls-slider__pagination {
+  padding-top: 20px;
+  flex-grow: 1;
+}
+
+.controls-slider__btns {
+  display: flex;
+  margin-left: auto;
+  align-self: flex-start;
+}

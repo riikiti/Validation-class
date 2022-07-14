@@ -1,0 +1,167 @@
+.certificate {
+  // .certificate__container
+  &__container {
+    padding: 90px 200px 150px 200px;
+    @include to(1500px){
+      padding: 90px 100px 150px 100px;
+    }
+    @include to(1350px){
+      padding: 40px 25px 70px 25px;
+    }
+  }
+  &__body{
+    display: flex;
+    @include to(1279px){
+      flex-direction: column;
+    }
+  }
+  // .certificate__aside
+  &__aside {
+    flex: 0 0 20%;
+  }
+
+  // .certificate__filters
+  &__filters {
+    list-style: none;
+
+    &::-webkit-scrollbar {
+    height: 2px;
+
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background:   rgba(230, 230, 230, 1);
+    }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgba(40, 100, 178, 1);;
+    }
+    @include to(1279px){
+      display: flex;
+      overflow: hidden;
+      padding-bottom: 20px;
+      overflow-x: scroll;
+      margin-bottom: 10px;
+    }
+  }
+
+  li.certificate__filter{
+    margin-bottom: 20px;
+    @include to(1279px){
+      margin-bottom: 0;
+    }
+  }
+  // .certificate__filter
+  &__filter {
+    color: #AEB6C1;
+    font-size: 16px;
+    font-weight: 600;
+    & a{
+      white-space: nowrap;
+    }
+    @include to(1279px){
+      &:not(:first-child){
+        margin-left: 40px;
+      }
+    }
+    &:hover{
+      & a{
+        color:#2864B2;
+      }
+      transition: color 0.2s;
+    }
+  }
+  &__filter-active{
+    color:#2864B2;
+  }
+
+
+  // .certificate__content
+  &__content {
+    flex:1;
+  }
+
+  // .certificate__card-list
+  &__card-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .certificate__card-item
+  &__card-item {
+
+  }
+}
+
+.card {
+  &-certificate {
+    background-color: #ffffff;
+    min-height: 110px;
+    height: 110px;
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 1px #E6E6E6;
+    display: flex;
+    align-items: center;
+    &:hover{
+      background: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+      box-shadow: 0px 7px 16px rgba(45, 104, 184, 0.4);
+      h5{
+        color:#ffffff;
+      }
+      & .button__type__download{
+        & svg{
+          path{
+            &:nth-child(1){
+              fill: #fff;
+            }
+          }
+          &>*:not(rect){
+            stroke:#fff;
+          }
+          rect{
+            fill: #fff;
+          }
+        }
+      }
+
+    }
+    &_link{
+      flex: 0 0 70%;
+      @include to(400px){
+        width: 50%;
+      }
+      padding:0 10px 0 0;
+      & h5{
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -ms-line-clamp: 3;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        display: -webkit-box;
+        display: box;
+        word-wrap: break-word;
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
+        @include to(340px){
+          font-size: 17px;
+        }
+
+      }
+    }
+    // .card__certificate-container
+    &_container {
+      display: flex;
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      padding: 0 30px;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+
+
+}

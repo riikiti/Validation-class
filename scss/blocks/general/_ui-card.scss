@@ -1,0 +1,140 @@
+.ui-card-news {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid $color-stroke;
+  background-color: $color-default-white;
+  transition: background-color $trans-300 ease-in;
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    color: $color-gray;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    height: 101px;
+    margin-bottom: 39px;
+  }
+
+  &__caption {
+    margin-top: auto;
+    color: $color-gray;
+  }
+
+  &:hover {
+    box-shadow: 0px 7px 16px rgba(45, 104, 184, 0.4);
+    background: $color-linear-secondary;
+
+    & > * {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.ui-card-small {
+  border: 1px solid rgba($color-default-white, 0.2);
+  padding: 30px;
+  color: $color-default-white;
+  height: 240px;
+  font-family: $font-inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.25;
+
+  &--main {
+    height: clamp(27vh, 240px, 240px);
+  }
+
+  @include vp--1599 {
+    height: 308px;
+    &--main {
+      height: clamp(20vh, 240px, 240px);
+    }
+  }
+
+  @include vp--1279 {
+    height: 255px;
+    &--main {
+      height: 255px;
+    }
+  }
+}
+
+.ui-card-img {
+  border: 1px solid #E6E6E6;
+  padding: 30px;
+  padding-right: 100px;
+
+  &:hover {
+    box-shadow: 0px 7px 16px rgba(45, 104, 184, 0.4);
+    background: $color-linear-secondary;
+
+    & > * {
+      color: #FFFFFF;
+    }
+  }
+
+  @include vp--1023{
+    padding-right: 30px;
+  }
+  @include vp--767{
+    padding-right: 15px;
+  }
+}
+
+.ui-card-orion {
+  height: 550px;
+  width: 100%;
+  padding: 60px;
+  background: $color-linear-secondary;
+  overflow: hidden;
+
+  & > * {
+    color: $color-default-white;
+    transform-origin: left;
+  }
+
+  .title {
+    margin-bottom: 40px;
+  }
+
+  p {
+    font-family: $font-inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 80%;
+  }
+
+  @include vp--1599 {
+    height: 359px;
+    padding: 40px 50px;
+
+    .title {
+      font-size: 43px;
+      line-height: 105%;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      max-width: 100%;
+    }
+  }
+
+  @include vp--1023 {
+    height: auto;
+
+    .title {
+      font-size: 27px;
+      line-height: 110%;
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.card{
+  padding: 20px;
+  width: 33.3333333333%;
+  background-color: #ffffff;
+ // min-height: 442px;
+  //height: 442px;
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 1px #E6E6E6;
+  @include to(500px){
+    min-height: initial;
+    height: auto;
+  }
+  &__field{
+    white-space: nowrap;
+    flex: 0 0 100px;
+  }
+}

@@ -1,0 +1,268 @@
+.contacts-map{
+position: relative;
+  width: 100%;
+  height: max-content;
+.map-info-container{
+  padding: 30px;
+  position: absolute;
+  z-index: 2;
+  top: 141px;
+  left: 199px;
+  width: 400px;
+  height: 416px;
+  border: 1px solid rgba(255,255,255,0.2);
+  @include to(1280px) {
+    left: 25px;
+  }
+  @include to(1024px) {
+      position: initial;
+      color: black;
+      margin: 20px;
+      width: calc(100% - 40px);
+      height: max-content;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  &__map-info{
+a{
+  @include to(1024px) {
+    color: black;
+  }
+}
+    h3{
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      @include to(1024px) {
+        color: black;
+      }
+    }
+    h5{
+      color: #FFFFFF;
+      @include to(1024px) {
+        color: black;
+      }
+    }
+
+  }
+
+  &__map-info-tel,&__map-info-mails{
+margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    a{
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 125%;
+      margin-bottom: 5px;
+    }
+  }
+}
+  iframe{
+    width: 100%;
+    height: 700px;
+    border: none;
+  }
+}
+.contacts-page-body{
+  margin-bottom: 50px;
+  @include to(1280px) {
+    flex-direction: column;
+  }
+  aside{
+    @include to(1280px) {
+      margin-bottom: 20px;
+    }
+  }
+  .certificate__filter{
+    color: #000000;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 145%;
+  }
+}
+.contacts {
+  &__container {
+    @include to(1280px) {
+    padding: 25px;
+    }
+  }
+}
+
+#map{
+  width: 100%;
+  height: 700px;
+  position: relative;
+  @include to(1024px) {
+    height: 500px;
+  }
+  .mapboxgl-ctrl{
+    margin: 0;
+    background: #AEB6C1 !important;
+    position: absolute;
+    left: 200px;
+    top: 600px;
+    @include to(1280px) {
+      left: 25px;
+    }
+    @include to(1024px) {
+    display: none;
+    }
+  }
+
+}
+.mapboxgl-marker{
+  svg{
+    path:nth-of-type(1){
+    fill: white;
+    }
+    circle{
+      fill: #20293D;
+    }
+  }
+}
+
+.contacts-card-bottom{
+  flex: 0 0 40%;
+  justify-content: initial;
+  @include to(1024px) {
+    padding: 0 15px;
+  }
+  span:nth-of-type(1){
+    padding: 0;
+    width: 110px;
+    margin-right: 100px;
+    @include to(1024px) {
+     width: 0;
+      margin: 0;
+    }
+  }
+  span:nth-of-type(2){
+    padding: 0;
+    width: 200px;
+white-space: nowrap;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 145%;
+    color: #000000;
+    @include to(1024px) {
+   white-space: normal;
+    }
+  }
+}
+
+.card-scrap{
+ /* &:hover{
+    span:nth-of-type(2) {
+      color: white;
+    }
+  }*/
+}
+/*
+.card-scrap {
+  &:hover {
+    background: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+    box-shadow: 0px 7px 16px rgba(45, 104, 184, 0.4);
+
+    & svg {
+      path {
+        stroke: white;
+      }
+    }
+
+    & .card-scrap_container h5 {
+      color: white;
+    }
+
+    & .card-scrap_container h4 {
+      color: white;
+    }
+  }
+}
+*/
+.card-with-orion{
+ svg{
+   width: 60%;
+   @include to(1024px) {
+     width: 100%;
+     margin-right: 20px;
+   }
+ }
+
+/*  &:hover{
+    path{
+      fill: white;
+    }
+  }*/
+}
+
+.orion-logo-for-card{
+  width: 692px;
+}
+
+.contacts{
+  &__form{
+    position: relative;
+    width: 100%;
+    &__wrap{
+      width: 600px;
+      @include to(1024px) {
+        width: 100%;
+      }
+    }
+  }
+}
+.contacts-hidden{
+  display: none;
+}
+.contacts-modal-wrap{
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin-top: 200px;
+  @include to(1024px) {
+    margin-top: 110px;
+    height: 200px;
+  }
+  p{
+    color: white;
+    width: 312px;
+  }
+}
+.contact-sert{
+  width: 100%;
+}
+
+.orion-download{
+
+  svg{
+    margin-left: 30px;
+    @include to(500px){
+      width: 12.26px;
+      height: 16.57px;
+      margin-left: 15px;
+    }
+    path:nth-of-type(1){
+      fill: none;
+    }
+  }
+}
+.card-contact{
+
+    transition: 1s ease;
+    background-color: #ffffff;
+    min-height: 110px;
+    height: max-content;
+    padding: 20px 20px 20px 0;
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 1px #E6E6E6;
+    display: flex;
+    align-items: center;
+}
+.card-mobile-h{
+  height: max-content;
+}

@@ -1,0 +1,152 @@
+.news {
+  margin-top: 90px;
+  margin-bottom: 150px;
+  @include to(1280px) {
+    margin-top: 40px;
+    margin-bottom: 70px;
+  }
+
+  &__container {
+    display: flex;
+    padding: 0 200px;
+    @include to(1279px) {
+      padding: 0 25px;
+    }
+    @include to(1023px) {
+      flex-direction: column;
+    }
+  }
+
+  // .news__filters
+  &__filters {
+
+    list-style: none;
+    &>*+*{
+      margin-top: 20px;
+    }
+    @include to(1023px) {
+      display: flex;
+      & > * + * {
+        margin-left: 40px;
+        margin-top: 0;
+      }
+    }
+    @include to(420px) {
+      overflow-x: scroll;
+    }
+  }
+
+  &__aside {
+    flex: 1;
+    margin-top: 37px;
+    padding-right: 40px;
+    @include to(1023px) {
+      margin-top: 0;
+      padding-right: 0;
+    }
+  }
+
+  // .news__filter
+  &__filter {
+    color: #AEB6C1;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 23px;
+    white-space: nowrap;
+margin-bottom: 20px;
+    &:hover {
+      color: #2864B2;
+    }
+  }
+
+  // .news__filter-active
+  &__filter-active {
+    color: #2864B2;
+  }
+
+  // .news__content
+  &__content {
+    flex: 5;
+
+  }
+
+  // .news__count
+  &__count {
+    font-size: 16px;
+    line-height: 24px;
+    color: #AEB6C1;
+  }
+
+  // .news__cards
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    @include to(710px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.card-news {
+  height: 330px;
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px #E6E6E6;
+  width: 50%;
+  & *{
+    cursor: pointer;
+  }
+  &:hover {
+    background: linear-gradient(90deg, #2C66B4 0%, #2E73CE 47.29%, #3D8BF4 100%);
+    transition: all 1s ease-out;
+    & .card-news__container *{
+      color: #fff;
+    }
+  }
+  @include to(710px) {
+    width: 100%;
+  }
+  &__container{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  // .card__news-title
+  &-title {
+    @include to(400px){
+      @include textelepsis(5);
+    }
+    margin-bottom: 15px;
+  }
+
+  // .card__news-text
+  &-text {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #AEB6C1;
+    @include textelepsis(3);
+    @include to(700px){
+      -ms-line-clamp: 6;
+      -webkit-line-clamp: 6;
+      line-clamp: 6;
+    }
+    @include to(375px){
+      -ms-line-clamp: 4;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+    }
+
+  }
+
+  // .card__news-datetime
+  &-datetime {
+    margin-top: auto;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #AEB6C1;
+  }
+}

@@ -1,0 +1,15 @@
+.container {
+  padding: 0 200px;
+
+  &--left {
+    padding-right: 0;
+  }
+
+  @include vp--1599 {
+    padding: 0 25px;
+
+    &--left {
+      padding-right: 25px;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.gallery-box {
+  margin-bottom: 170px;
+}
+
+.gallery-box__content {
+  display: grid;
+  grid-template-columns: minmax(720px, 1fr) 1fr;
+  grid-template-rows: 200px 200px min-content;
+  grid-template-areas:
+    "v lf"
+    "v ls"
+    "s .";
+
+  @include vp--1599 {
+    grid-template-rows: 680px min-content minmax(200px, auto) minmax(200px, auto);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "v v"
+    "s s"
+    "lf lf"
+    "ls ls";
+  }
+  @include vp--1279{
+    grid-template-rows: 540px min-content minmax(200px, auto) minmax(200px, auto);
+  }
+
+  @include vp--767{
+    grid-template-rows: auto min-content minmax(200px, auto) minmax(200px, auto);
+  }
+}
+
+.gallery-box__media {
+  grid-area: v;
+  overflow: hidden;
+  max-width: 100%;
+  @include vp--1599 {
+    margin-bottom: 15px;
+  }
+}
+
+.gallery-box__video {
+  height: 0;
+  padding-bottom: 56.25%;
+  width: 100%;
+  position: relative;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+.gallery-box__video-sigh {
+  grid-area: s;
+
+  @include vp--1599 {
+    margin-bottom: 50px;
+  }
+}
+
+.gallery-box__img-link {
+  &:first-of-type {
+    grid-area: lf;
+  }
+
+  &:last-of-type {
+    grid-area: ls;
+  }
+}

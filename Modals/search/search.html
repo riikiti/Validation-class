@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="/scss/main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Condensed&family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<button data-model="search-modal" class="button__type__primary button__type__search-main">open</button>
+<div id="search-modal" class="modal modal__search">
+    <div class="modal__container">
+        <div class="search__container">
+            <div class="search__header">
+                <div class="search__header_controls">
+                    <input type="text" id="search" name="search" autofocus placeholder="Поиск по сайту"
+                           class="search__input">
+                    <button class="search__button button__type__search">
+                        <span>
+                            <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.97953 0.0800781C3.41555 0.0800781 0.519531 2.82367 0.519531 6.20008C0.519531 9.57648 3.41555 12.3201 6.97953 12.3201C8.38969 12.3201 9.69297 11.8898 10.7558 11.1613L15.7552 15.8863L16.8239 14.8738L11.8839 10.1826C12.8547 9.11102 13.4395 7.72023 13.4395 6.20008C13.4395 2.82367 10.5435 0.0800781 6.97953 0.0800781ZM6.97953 0.800078C10.1323 0.800078 12.6795 3.2132 12.6795 6.20008C12.6795 9.18695 10.1323 11.6001 6.97953 11.6001C3.82672 11.6001 1.27953 9.18695 1.27953 6.20008C1.27953 3.2132 3.82672 0.800078 6.97953 0.800078Z"
+                                        fill="black"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="search__header_close">
+                    <button class="modal__close">
+                          <span>
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                              <rect y="23.3347" width="15.8714" height="2" transform="rotate(-45 0 23.3347)"
+                                    fill="white"/>
+                              <rect x="13.9336" y="9.40161" width="12.2946" height="2"
+                                    transform="rotate(-45 13.9336 9.40161)" fill="white"/>
+                              <rect x="22.6289" y="24.0417" width="32" height="2"
+                                    transform="rotate(-135 22.6289 24.0417)" fill="white"/>
+                          </svg>
+                          </span>
+                    </button>
+                </div>
+            </div>
+            <div class="search__results">
+                <span class="search__counter search__results-full">
+                    Найдено 15 результатов
+                </span>
+                <div class="search__results_container">
+                    <div class="search__results_block search__results-empty hidden">
+                        <h5>По вашему запросу ничего не найдено</h5>
+                        <p>Попробуйте изменить формулировку или воспользоваться нашим <a href="/products.html"
+                                                                                         class="button__type__link">каталогом</a>.
+                        </p>
+                    </div>
+                    <div class="search__results_block search__results-full ">
+                        <ul class="search__results-list">
+                            <li class="search__results-item card-search">
+                                <div class="card-search_container">
+                                    <h5 class="card-search__title">Алюминиевые <span class="searched-text">сплавы</span>
+                                    </h5>
+                                    <p class="card-search__descr">
+                                        ООО &laquo;Орион-Спецсплав-Гатчина&raquo; предлагает предприятиям и&nbsp;торговым
+                                        компаниям алюминиевые <span class="searched-text">сплавы</span>. У&nbsp;нас вы&nbsp;найдёте
+                                        широкий ассортимент марок разной технической сложности
+                                    </p>
+                                    <nav class="card-search__nav">
+                                        <ul class="card-search__list">
+                                            <li class="card-search__item"><a class="card-search__link">Главная</a></li>
+                                            <li class="card-search__item"><a class="card-search__link">Продукция</a>
+                                            </li>
+                                            <li class="card-search__item"><a class="card-search__link">Продукция</a>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="search__results-item card-search">
+                                <div class="card-search_container">
+                                    <h5 class="card-search__title">Алюминиевые <span class="searched-text">сплавы</span>
+                                    </h5>
+                                    <p class="card-search__descr">
+                                        ООО &laquo;Орион-Спецсплав-Гатчина&raquo; предлагает предприятиям и&nbsp;торговым
+                                        компаниям алюминиевые <span class="searched-text">сплавы</span>. У&nbsp;нас вы&nbsp;найдёте
+                                        широкий ассортимент марок разной технической сложности
+                                    </p>
+                                    <nav class="card-search__nav">
+                                        <ul class="card-search__list">
+                                            <li class="card-search__item"><a class="card-search__link">Главная</a></li>
+                                            <li class="card-search__item"><a class="card-search__link">Продукция</a>
+                                            </li>
+                                            <li class="card-search__item"><a class="card-search__link">Продукция</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="search__results-item card-search">
+                                <div class="card-search_container">
+                                    <h5 class="card-search__title">Алюминиевые <span class="searched-text">сплавы</span>
+                                    </h5>
+                                    <p class="card-search__descr">
+                                        ООО &laquo;Орион-Спецсплав-Гатчина&raquo; предлагает предприятиям и&nbsp;торговым
+                                        компаниям алюминиевые <span class="searched-text">сплавы</span>. У&nbsp;нас вы&nbsp;найдёте
+                                        широкий ассортимент марок разной технической сложности
+                                    </p>
+                                    <nav class="card-search__nav">
+                                        <ul class="card-search__list">
+                                            <li class="card-search__item"><a class="card-search__link">Главная</a></li>
+                                            <li class="card-search__item"><a class="card-search__link">Продукция</a>
+                                            </li>
+                                            <li class="card-search__item"><a class="card-search__link">Продукция</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal__overlay"></div>
+</div>
+</body>
+<script src="/js/jqery.js"></script>
+<script src="/js/main.js"></script>
+</html>

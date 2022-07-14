@@ -1,0 +1,222 @@
+*,*::before,*::after{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #000;
+  background-color: white;
+  overflow-x: hidden;
+  overflow-anchor: none;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.main {
+  margin-top: 150px;
+  @include to(1024px){
+    margin-top: 70px;
+  }
+}
+.active-link{
+  color: #2864B2;
+}
+button {
+  appearance: none;
+  outline: none;
+  border: transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="button"], input[type="submit"] {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+textarea {
+  max-height: 150px;
+  min-height: 80px;
+  height: 80px;
+  resize: vertical;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: $font-roboto-condensed;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 64px;
+  text-transform: uppercase;
+  color: #000000;
+
+  & span {
+    color: #2864B2;
+  }
+
+  @include to(1280px) {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+
+h2 {
+  font-family: $font-roboto-condensed;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 43px;
+  line-height: 43px;
+  text-transform: uppercase;
+  color: #000000;
+
+  & span {
+    color: #2864B2;
+  }
+
+  @include to(1280px) {
+    font-size: 27px;
+    line-height: 32px;
+  }
+}
+
+h3 {
+  font-family:$font-roboto-condensed;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 37px;
+  line-height: 43px;
+  color: #000;
+  @include to(1280px) {
+    font-size: 27px;
+    line-height: 32px;
+  }
+}
+
+h4{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 32px;
+  color: #000000;
+  @include to(1280px){
+    font-size: 27px;
+    line-height: 32px;
+  }
+}
+
+h4 {
+  font-family: $font-roboto-condensed;
+
+  .text-h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
+    color: #000000;
+    @include to(1280px) {
+      font-size: 27px;
+      line-height: 32px;
+    }
+  }
+}
+h5 {
+  font-family: $font-roboto-condensed;
+}
+h5{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000;
+}
+
+//ul {
+//  list-style: none;
+//}
+//
+//li {
+//  & span {
+//    display: flex;
+//    align-items: flex-start;
+//
+//    &::before {
+//      content: '';
+//      display: inline-block;
+//      width: 5px;
+//      height: 5px;
+//      margin-right: 10px;
+//      background-color: #2864b2;
+//      margin-top: 4px;
+//      flex: 0 0 5px;
+//    }
+//  }
+//
+//}
+
+.hidden {
+  opacity: 0;
+  display: none !important;
+  visibility: hidden;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.body-fixed {
+  overflow: hidden;
+}

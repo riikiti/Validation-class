@@ -1,0 +1,53 @@
+.privacy {
+  // .privacy__container
+  &__container {
+    padding: 90px 200px 150px 200px;
+    @include to(1280px){
+      padding: 20px 25px 60px 25px;
+    }
+  }
+  &__block{
+    &:not(:first-child){
+      margin-top: 50px;
+    }
+  }
+  ul{
+    list-style: none;
+  }
+  h3,h4{
+
+
+    margin-bottom: 30px;
+  }
+  p+p{
+    margin-top: 20px;
+  }
+  h2{
+    margin-bottom: 40px;
+  }
+  a{
+    color:#2864B2;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  ol {
+    counter-reset: item;
+    margin-left: 0;
+    padding-left: 0;
+    li {
+      & span {
+        display: flex;
+        align-items: flex-start;
+        &::before {
+          display: inline-block;
+          content: counter(item);
+          counter-increment: item;
+          width: 1.3em;
+          color:#2864B2;
+          margin-left: -1em;
+        }
+      }
+    }
+  }
+}

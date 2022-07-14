@@ -1,0 +1,172 @@
+.products-box {
+  position: relative;
+  overflow: hidden;
+  //min-height: 900px;
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include vp--1599 {
+    //min-height: unset;
+  }
+
+  @include vp--1279 {
+  }
+}
+
+.products-box__title {
+  max-width: 60%;
+  min-height: 128px;
+  margin-bottom: auto;
+
+  @include vp--1023 {
+    max-width: unset;
+    min-height: unset;
+  }
+}
+
+.products-box__layout {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+  //margin-top: auto;
+}
+
+.products-box__list {
+  display: grid;
+  grid-template-areas: "one two three four five" "six seven eight nine ten";
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: auto;
+  align-self: flex-end;
+  width: 100%;
+
+  @include vp--1599 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include vp--1023 {
+    display: block;
+  }
+}
+
+.products-box__card {
+
+  &[data-product="1"] {
+    grid-area: one;
+  }
+
+  &[data-product="2"] {
+    grid-area: two;
+  }
+
+  &[data-product="3"] {
+    grid-area: three;
+  }
+
+  &[data-product="4"] {
+    grid-area: four;
+  }
+
+  &[data-product="5"] {
+    grid-area: five;
+  }
+
+  &[data-product="6"] {
+    grid-area: six;
+  }
+
+  &[data-product="7"] {
+    grid-area: seven;
+  }
+
+  &[data-product="8"] {
+    grid-area: eight;
+  }
+
+  &[data-product="9"] {
+    grid-area: nine;
+  }
+
+  &[data-product="10"] {
+    grid-area: ten;
+  }
+
+  @include vp--1599 {
+    flex: 1 1 307px;
+  }
+
+  @include vp--1279 {
+    flex: 1 1 50%;
+  }
+
+  @include vp--1023 {
+    display: block;
+  }
+}
+
+.product-box__media {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  -webkit-filter: brightness(40%);
+  filter: brightness(40%);
+
+  @include vp--1279 {
+    height: 100vh;
+  }
+}
+
+.product-box__media-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 1;
+    @media (min-aspect-ratio: 16/9) {
+
+      /* height = 100 * (9 / 16) = 56.25 */
+      height: 56.25vw;
+
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      /* width = 100 / (9 / 16) = 177.777777 */
+      width: 177.78vh;
+    }
+  }
+}

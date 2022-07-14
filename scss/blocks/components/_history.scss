@@ -1,0 +1,89 @@
+.history {
+  background-color: #2E323D;
+  // .history__container
+  &__container {
+    padding: 90px 0 150px 200px;
+    @include to(1500px) {
+      padding: 40px 0 0 100px;
+    }
+    @include to(1024px) {
+      padding: 40px 0 40px 0;
+    }
+    @include to(600px){
+      padding: 20px 0 50px 0;
+    }
+  }
+  & .slider__pagination_container{
+    position:initial;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: -25px;
+  }
+  &__slider {
+    &_wrapper {
+      position: relative;
+    }
+  }
+
+  // .history__swiper
+  &__swiper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    padding: 5px;
+    padding-bottom: 56px;
+    @include to(1024px){
+      padding-bottom: 30px;
+    }
+  }
+
+  &__navigation {
+    max-width: 1200px;
+    width: 100%;
+    @include to(1024px){
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+    & .slider-pagination {
+      width: 1100px;
+      @include to(1400px) {
+        width: 100%;
+      }
+    }
+  }
+
+  // .history__card
+  &__card {
+    padding: 30px;
+    height: auto;
+    min-height: 330px;
+    width: 480px;
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+    // .history__card_container
+    &_container {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+    }
+
+    &_date {
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    &_description{
+      font-weight: 600;
+    }
+    // .history__card_date
+    & h3 {
+      margin-bottom: 20px;
+      color: #fff;
+    }
+  }
+}
+
+.card {
+  // .card__history
+  &__history {
+  }
+}
