@@ -264,10 +264,10 @@ class Validation {
     constructor(form) {
         if (form) {
             /* btn init */
-            let btn = form.querySelector(".btn");
-            this.#Btn = btn;
-            this.#BtnStatus = false;
-            this.#Btn.disabled = true;
+            let btn = form.querySelector(".btn"); // search btn
+            this.#Btn = btn; // init btn selector
+            this.#BtnStatus = false; // make btn status
+            this.#Btn.disabled = true; // make btn disabled
             /* btn init */
 
             let inputs = form.querySelectorAll(".valid-input"); // find all inputs in form
@@ -307,15 +307,16 @@ class Validation {
     }
 
     #CheckDisabled() {
+
+        // need method as loop event listner keyup on inputs
+
         let inputs = Object.keys(this.#InputStatus); // get full keys/name of inputs
-        inputs.forEach((e) => {
-            this.#SelectValidate(e);
+        inputs.forEach((input) => {
+            this['Check' + input](); // call function for validation current input
         })
 
     }
 
-    #SelectValidate(input) {
-        this['Check' + input]();
-    }
+
 
 }
