@@ -308,7 +308,7 @@ class Validation {
 
     #CheckDisabled() {
 
-        // need method as loop event listner keyup on inputs
+        //todo need method as loop event listner keyup on inputs
 
         let inputs = Object.keys(this.#InputStatus); // get full keys/name of inputs
         inputs.forEach((input) => {
@@ -317,6 +317,90 @@ class Validation {
 
     }
 
+    #CheckName() {
+        let value = this.#Name.value; // get input value
+        let container = value.closest("label"); // get parent label
+        let error = container.querySelector(".js-warning"); // get error msg
+        //todo вставлять контент ошибки
+        if (value.length < 2) {
+            error.fadeIn(); //Показываем ошибку jqury
+            this.#Name.classList.add("error-border"); // style error
+            this.#InputStatus.Name = false; // input is not valid
+        } else {
+            error.fadeIn(); //Показываем ошибку jqury
+            this.#Name.classList.add("error-border"); // style error
+            this.#InputStatus.Name = false; // input is not valid
+        }
+    }
 
+    #CheckPhone() {
+        let value = this.#Mail.value; // get input value
+        let container = value.closest("label"); // get parent label
+        let error = container.querySelector(".js-warning"); // get error msg
+        let validReg = Inputmask.isValid(phone, {mask: '+7 (999) 999-99-99'});//Проверяем на валидность
+
+        if (!validReg) {
+            error.fadeIn(); //Показываем ошибку jqury
+            this.#Phone.classList.add("error-border"); // style error
+            this.#InputStatus.Phone = false; // input is not valid
+        } else {
+            error.fadeIn(); //Показываем ошибку jqury
+            this.#Phone.classList.add("error-border"); // style error
+            this.#InputStatus.Phone = false; // input is not valid
+        }
+
+    }
+
+    #CheckMail() {
+        let value = this.#Mail.value; // get input value
+        let container = value.closest("label"); // get parent label
+        let error = container.querySelector(".js-warning"); // get error msg
+        let validReg = Inputmask.isValid(mail, {mask: "*{1,20}[.*{1,20}]@*{1,20}.*{1,20}[.*{1,20}]",});	//Проверяем на валидность
+        if (!validReg) {
+            error.fadeIn(); //Показываем ошибку jqury
+            this.#Mail.classList.add("error-border"); // style error
+            this.#InputStatus.Mail = false; // input is not valid
+        } else {
+            error.fadeIn(); //Показываем ошибку jqury
+            this.#Mail.classList.add("error-border"); // style error
+            this.#InputStatus.Mail = false; // input is not valid
+        }
+    }
+
+    #CheckSelect() {
+
+    }
+
+    #CheckFile() {
+        this.#File.addEventListener("change",()=>{
+            //todo сделалать сколько символов файлов показывать при создание обьекта класса и переписать на ванильке
+            var file = this.#File;
+            // var fileLen = fileName.html($('input[type=file]').val().split('\\').pop());
+            var split = this.#File.val().split('\\').pop().split('.');
+            var filename = split[0];
+            var extension = split[1];
+            if (filename.length > 10) {
+                filename = filename.substring(0, 30);
+                filename += "...";
+            }
+            file.html(filename);
+        });
+    }
+
+
+    #CheckValid() { // function search false status of all inputs
+        let status = true;
+        Object.values(this.#InputStatus).forEach((e) => {
+            if (e == false) {
+                status = false;
+            }
+        })
+        return status;
+    }
 
 }
+
+//todo input mask on phone inicialization only 1
+
+
+//todo при инициализации класа инициализировать инпут маску для телефона и почты
