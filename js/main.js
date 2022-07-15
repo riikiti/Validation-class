@@ -338,9 +338,16 @@ class Validation {
         }
         if (input == "Phone") {
             this.#Phone = value;
+            this.MuskTel();
         }
         if (input == "Mail") {
             this.#Mail = value;
+            $(function () {
+                jQuery(".js-input-mail").inputmask({
+                    // mask: "*{1,20}[.*{1,20}]@*{1,20}[.*{1,20}].*{1,20}[.*{1,20}]",
+                    showMaskOnHover: false,
+                });
+            })
         }
         if (input == "Select") {
             this.#Select = value;
@@ -353,6 +360,17 @@ class Validation {
         }
 
     }
+
+    MuskTel() {
+        $(function () {
+        jQuery('.js-input-phone').inputmask({
+            mask: '+7 (999) 999-99-99',
+            showMaskOnHover: true,
+            inputmode: 'tel',
+        });
+        })
+    }
+
 
     CheckDisabled() {
 
@@ -367,15 +385,15 @@ class Validation {
 
     CheckName() {
         let value = this.#Name.value; // get input value
-        let container = value.closest("label"); // get parent label
+        let container = this.#Name.closest('label'); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
         //todo вставлять контент ошибки
         if (value.length < 2) {
-            error.fadeIn(); //Показываем ошибку jqury
+       // todo сделать появление ошибки
             this.#Name.classList.add("error-border"); // style error
             this.#InputStatus.Name = false; // input is not valid
         } else {
-            error.fadeIn(); //Показываем ошибку jqury
+
             this.#Name.classList.add("error-border"); // style error
             this.#InputStatus.Name = false; // input is not valid
         }
@@ -383,33 +401,32 @@ class Validation {
 
     CheckPhone() {
         let value = this.#Mail.value; // get input value
-        let container = value.closest("label"); // get parent label
+        let container = this.#Mail.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
-        let validReg = Inputmask.isValid(phone, {mask: '+7 (999) 999-99-99'});//Проверяем на валидность
+        let validReg = Inputmask.isValid(value, {mask: '+7 (999) 999-99-99'});//Проверяем на валидность
 
         if (!validReg) {
-            error.fadeIn(); //Показываем ошибку jqury
+            // todo сделать появление ошибки
             this.#Phone.classList.add("error-border"); // style error
             this.#InputStatus.Phone = false; // input is not valid
         } else {
-            error.fadeIn(); //Показываем ошибку jqury
+
             this.#Phone.classList.add("error-border"); // style error
             this.#InputStatus.Phone = false; // input is not valid
         }
 
     }
 
-    CheckMail() {
+   CheckMail() {
         let value = this.#Mail.value; // get input value
-        let container = value.closest("label"); // get parent label
+        let container = this.#Mail.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
-        let validReg = Inputmask.isValid(mail, {mask: "*{1,20}[.*{1,20}]@*{1,20}.*{1,20}[.*{1,20}]",});	//Проверяем на валидность
+        let validReg = Inputmask.isValid(value, {mask: "*{1,20}[.*{1,20}]@*{1,20}.*{1,20}[.*{1,20}]",});	//Проверяем на валидность
         if (!validReg) {
-            error.fadeIn(); //Показываем ошибку jqury
+            // todo сделать появление ошибки
             this.#Mail.classList.add("error-border"); // style error
             this.#InputStatus.Mail = false; // input is not valid
         } else {
-            error.fadeIn(); //Показываем ошибку jqury
             this.#Mail.classList.add("error-border"); // style error
             this.#InputStatus.Mail = false; // input is not valid
         }
