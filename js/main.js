@@ -469,4 +469,5 @@ const form = new Validation(document.querySelector(".js-form"))
 //todo input mask on phone inicialization only 1
 
 
+
 //todo при инициализации класа инициализировать инпут маску для телефона и почты
