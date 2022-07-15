@@ -1,3 +1,4 @@
+/*
 if (document.querySelector(".js-form")) {
 
     var freeInputP = 1;
@@ -248,6 +249,51 @@ if (document.querySelector(".js-form")) {
 
     }
 }
+*/
+
+
+
+$(function () {
+    jQuery('.js-input-phone').inputmask({
+        mask: '+7 (999) 999-99-99',
+        showMaskOnHover: true,
+        inputmode: 'tel',
+        onincomplete: function () {
+            checkValuePhone($(this));
+        },
+        oncomplete: function () {
+            checkValuePhone($(this));
+
+        }
+    });
+//Маска для почты
+    jQuery(".js-input-mail").inputmask({
+        // mask: "*{1,20}[.*{1,20}]@*{1,20}[.*{1,20}].*{1,20}[.*{1,20}]",
+        showMaskOnHover: false,
+        onincomplete: function () {
+            checkValueMail($(this));
+
+        },
+        oncomplete: function () {
+            checkValueMail($(this));
+
+        }
+    });
+// Вызов функции заполнения для текста при введение
+    jQuery(".js-input-text").inputmask({
+        showMaskOnHover: false,
+        onincomplete: function () {
+            checkValueText($(this));
+
+        },
+        oncomplete: function () {
+            checkValueText($(this));
+
+        }
+    });
+
+
+});
 
 
 class Validation {
@@ -258,7 +304,9 @@ class Validation {
     #Textarea;
     #File;
     #Btn;
-    #InputStatus; // obj
+    #InputStatus = {
+
+    }; // obj
     #BtnStatus;
 
     constructor(form) {
@@ -270,21 +318,21 @@ class Validation {
             this.#Btn.disabled = true; // make btn disabled
             /* btn init */
 
-            let inputs = form.querySelectorAll(".valid-input"); // find all inputs in form
+            let inputs = form.querySelectorAll("input"); // find all inputs in form
             inputs.forEach((e) => {
-                if (e.getAttribute("data-input")) {
+                if (e.getAttribute("data-input")!=null) {
                     let inputType = e.getAttribute("data-input"); // get type of input
-                    this.#InputStatus.inputType = false; // make status of input for validation
-                    this.#SelectInput(inputType, e); // enter value to variable, which contains in form
+                    this.#InputStatus[`${inputType}`] = false; // make status of input for validation
+                    this.SelectInput(inputType, e); // enter value to variable, which contains in form
                 }
             });
-            this.#CheckDisabled(); // validate
+            this.CheckDisabled(); // validate
         } else {
             console.log("error");
         }
     }
 
-    #SelectInput(input, value) {
+    SelectInput(input, value) {
         if (input == "Name") {
             this.#Name = value;
         }
@@ -306,7 +354,7 @@ class Validation {
 
     }
 
-    #CheckDisabled() {
+    CheckDisabled() {
 
         //todo need method as loop event listner keyup on inputs
 
@@ -317,7 +365,7 @@ class Validation {
 
     }
 
-    #CheckName() {
+    CheckName() {
         let value = this.#Name.value; // get input value
         let container = value.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
@@ -333,7 +381,7 @@ class Validation {
         }
     }
 
-    #CheckPhone() {
+    CheckPhone() {
         let value = this.#Mail.value; // get input value
         let container = value.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
@@ -351,7 +399,7 @@ class Validation {
 
     }
 
-    #CheckMail() {
+    CheckMail() {
         let value = this.#Mail.value; // get input value
         let container = value.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
@@ -367,11 +415,11 @@ class Validation {
         }
     }
 
-    #CheckSelect() {
+    CheckSelect() {
 
     }
 
-    #CheckFile() {
+    CheckFile() {
         this.#File.addEventListener("change",()=>{
             //todo сделалать сколько символов файлов показывать при создание обьекта класса и переписать на ванильке
             var file = this.#File;
@@ -388,7 +436,7 @@ class Validation {
     }
 
 
-    #CheckValid() { // function search false status of all inputs
+    CheckValid() { // function search false status of all inputs
         let status = true;
         Object.values(this.#InputStatus).forEach((e) => {
             if (e == false) {
@@ -400,6 +448,7 @@ class Validation {
 
 }
 
+const form = new Validation(document.querySelector(".js-form"))
 //todo input mask on phone inicialization only 1
 
 
