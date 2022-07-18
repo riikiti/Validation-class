@@ -252,50 +252,6 @@ if (document.querySelector(".js-form")) {
 */
 
 
-
-$(function () {
-    jQuery('.js-input-phone').inputmask({
-        mask: '+7 (999) 999-99-99',
-        showMaskOnHover: true,
-        inputmode: 'tel',
-        onincomplete: function () {
-            checkValuePhone($(this));
-        },
-        oncomplete: function () {
-            checkValuePhone($(this));
-
-        }
-    });
-//Маска для почты
-    jQuery(".js-input-mail").inputmask({
-        // mask: "*{1,20}[.*{1,20}]@*{1,20}[.*{1,20}].*{1,20}[.*{1,20}]",
-        showMaskOnHover: false,
-        onincomplete: function () {
-            checkValueMail($(this));
-
-        },
-        oncomplete: function () {
-            checkValueMail($(this));
-
-        }
-    });
-// Вызов функции заполнения для текста при введение
-    jQuery(".js-input-text").inputmask({
-        showMaskOnHover: false,
-        onincomplete: function () {
-            checkValueText($(this));
-
-        },
-        oncomplete: function () {
-            checkValueText($(this));
-
-        }
-    });
-
-
-});
-
-
 class Validation {
     #Name;
     #Phone;
@@ -304,10 +260,9 @@ class Validation {
     #Textarea;
     #File;
     #Btn;
-    #InputStatus = {
-
-    }; // obj
+    #InputStatus = {}; // obj
     #BtnStatus;
+    #AllInputs; // for focus
 
     constructor(form) {
         if (form) {
@@ -319,8 +274,9 @@ class Validation {
             /* btn init */
 
             let inputs = form.querySelectorAll("input"); // find all inputs in form
+            this.#AllInputs = inputs; // add at variable all inputs for focus searching
             inputs.forEach((e) => {
-                if (e.getAttribute("data-input")!=null) {
+                if (e.getAttribute("data-input") != null) {
                     let inputType = e.getAttribute("data-input"); // get type of input
                     this.#InputStatus[`${inputType}`] = false; // make status of input for validation
                     this.SelectInput(inputType, e); // enter value to variable, which contains in form
@@ -328,7 +284,7 @@ class Validation {
             });
             this.CheckDisabled(); // validate
         } else {
-            console.log("error");
+            console.log("error: haven't form");
         }
     }
 
@@ -338,16 +294,10 @@ class Validation {
         }
         if (input == "Phone") {
             this.#Phone = value;
-            this.MuskTel();
+            //  this.MuskTel();
         }
         if (input == "Mail") {
             this.#Mail = value;
-            $(function () {
-                jQuery(".js-input-mail").inputmask({
-                    // mask: "*{1,20}[.*{1,20}]@*{1,20}[.*{1,20}].*{1,20}[.*{1,20}]",
-                    showMaskOnHover: false,
-                });
-            })
         }
         if (input == "Select") {
             this.#Select = value;
@@ -363,11 +313,11 @@ class Validation {
 
     MuskTel() {
         $(function () {
-        jQuery('.js-input-phone').inputmask({
-            mask: '+7 (999) 999-99-99',
-            showMaskOnHover: true,
-            inputmode: 'tel',
-        });
+            jQuery('.js-input-phone').inputmask({
+                mask: '+7 (999) 999-99-99',
+                showMaskOnHover: true,
+                inputmode: 'tel',
+            });
         })
     }
 
@@ -375,11 +325,29 @@ class Validation {
     CheckDisabled() {
 
         //todo need method as loop event listner keyup on inputs
-
-        let inputs = Object.keys(this.#InputStatus); // get full keys/name of inputs
-        inputs.forEach((input) => {
-            this['Check' + input](); // call function for validation current input
+        /*focus*/
+        this.#AllInputs.forEach((e)=>{
+            e.addEventListener('keyup', () => {
+                /* call function valid */
+                let inputs = Object.keys(this.#InputStatus); // get full keys/name of inputs
+                inputs.forEach((input) => {
+                    this['Check' + input](); // call function for validation current input
+                })
+                if (this.CheckValid() == true) {
+                    this.#BtnStatus = true;
+                    this.#Btn.disabled = false;
+                }
+                else {
+                    this.#BtnStatus =false;
+                    this.#Btn.disabled = true;
+                }
+                /* call function valid */
+            })
         })
+
+
+        /*focus*/
+
 
     }
 
@@ -389,46 +357,50 @@ class Validation {
         let error = container.querySelector(".js-warning"); // get error msg
         //todo вставлять контент ошибки
         if (value.length < 2) {
-       // todo сделать появление ошибки
+            // todo сделать появление ошибки
             this.#Name.classList.add("error-border"); // style error
             this.#InputStatus.Name = false; // input is not valid
         } else {
 
-            this.#Name.classList.add("error-border"); // style error
-            this.#InputStatus.Name = false; // input is not valid
+            this.#Name.classList.remove("error-border"); // style error
+            this.#InputStatus.Name = true; // input is not valid
         }
     }
 
     CheckPhone() {
+
+        let reg = "*{1,20}[.*{1,20}]@*{1,20}.*{1,20}[.*{1,20}]";
         let value = this.#Mail.value; // get input value
         let container = this.#Mail.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
         let validReg = Inputmask.isValid(value, {mask: '+7 (999) 999-99-99'});//Проверяем на валидность
-
+        validReg = (reg).test(value);
         if (!validReg) {
             // todo сделать появление ошибки
             this.#Phone.classList.add("error-border"); // style error
             this.#InputStatus.Phone = false; // input is not valid
         } else {
 
-            this.#Phone.classList.add("error-border"); // style error
-            this.#InputStatus.Phone = false; // input is not valid
+            this.#Phone.classList.remove("error-border"); // style error
+            this.#InputStatus.Phone = true; // input is not valid
         }
 
     }
 
-   CheckMail() {
+    CheckMail() {
+        let email = /([\w-\.]+@[\w\.]+\.{1}[\w]+)/;
         let value = this.#Mail.value; // get input value
         let container = this.#Mail.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
-        let validReg = Inputmask.isValid(value, {mask: "*{1,20}[.*{1,20}]@*{1,20}.*{1,20}[.*{1,20}]",});	//Проверяем на валидность
+        console.log(email.test(value))
+        let validReg = email.test(value);
         if (!validReg) {
             // todo сделать появление ошибки
             this.#Mail.classList.add("error-border"); // style error
             this.#InputStatus.Mail = false; // input is not valid
         } else {
-            this.#Mail.classList.add("error-border"); // style error
-            this.#InputStatus.Mail = false; // input is not valid
+            this.#Mail.classList.remove("error-border"); // style error
+            this.#InputStatus.Mail = true; // input is not valid
         }
     }
 
@@ -437,7 +409,7 @@ class Validation {
     }
 
     CheckFile() {
-        this.#File.addEventListener("change",()=>{
+        this.#File.addEventListener("change", () => {
             //todo сделалать сколько символов файлов показывать при создание обьекта класса и переписать на ванильке
             var file = this.#File;
             // var fileLen = fileName.html($('input[type=file]').val().split('\\').pop());
@@ -465,9 +437,10 @@ class Validation {
 
 }
 
-const form = new Validation(document.querySelector(".js-form"))
-//todo input mask on phone inicialization only 1
+const form = new Validation(document.querySelector(".js-form"));
 
+
+//todo input mask on phone inicialization only 1
 
 
 //todo при инициализации класа инициализировать инпут маску для телефона и почты
