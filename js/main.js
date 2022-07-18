@@ -326,23 +326,36 @@ class Validation {
 
         //todo need method as loop event listner keyup on inputs
         /*focus*/
-        this.#AllInputs.forEach((e)=>{
-            e.addEventListener('keyup', () => {
-                /* call function valid */
-                let inputs = Object.keys(this.#InputStatus); // get full keys/name of inputs
-                inputs.forEach((input) => {
+        this.#AllInputs.forEach((e) => {
+            let input = e.getAttribute("data-input") // get full keys/name of inputs
+            if (input == "Name" || input == "Mail" || input == "Textarea") {
+                e.addEventListener('keyup', () => {
+                    /* call function valid */
                     this['Check' + input](); // call function for validation current input
+                    if (this.CheckValid() == true) {
+                        this.#BtnStatus = true;
+                        this.#Btn.disabled = false;
+                    } else {
+                        this.#BtnStatus = false;
+                        this.#Btn.disabled = true;
+                    }
+                    /* call function valid */
                 })
-                if (this.CheckValid() == true) {
-                    this.#BtnStatus = true;
-                    this.#Btn.disabled = false;
-                }
-                else {
-                    this.#BtnStatus =false;
-                    this.#Btn.disabled = true;
-                }
-                /* call function valid */
-            })
+            }
+            if (input == "File") {
+                e.addEventListener('change', () => {
+                    /* call function valid */
+                    this['Check' + input](); // call function for validation current input
+                    if (this.CheckValid() == true) {
+                        this.#BtnStatus = true;
+                        this.#Btn.disabled = false;
+                    } else {
+                        this.#BtnStatus = false;
+                        this.#Btn.disabled = true;
+                    }
+                    /* call function valid */
+                })
+            }
         })
 
 
@@ -409,7 +422,7 @@ class Validation {
     }
 
     CheckFile() {
-        this.#File.addEventListener("change", () => {
+
             //todo сделалать сколько символов файлов показывать при создание обьекта класса и переписать на ванильке
             var file = this.#File;
             // var fileLen = fileName.html($('input[type=file]').val().split('\\').pop());
@@ -421,7 +434,6 @@ class Validation {
                 filename += "...";
             }
             file.html(filename);
-        });
     }
 
 
