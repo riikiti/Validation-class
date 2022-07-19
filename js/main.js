@@ -266,8 +266,7 @@ class Validation {
     constructor(form) {
         if (form) {
             /* btn init */
-            let btn = form.querySelector(".btn"); // search btn
-            this.#Btn = btn; // init btn selector
+            this.#Btn = form.querySelector(".btn");// init btn selector
             this.#BtnStatus = false; // make btn status
             this.#Btn.disabled = true; // make btn disabled
             /* btn init */
@@ -288,20 +287,20 @@ class Validation {
     }
 
     SelectInput(input, value) {
-        if (input == "Phone") {
+        if (input === "Phone") {
             this.#Phone = value;
             //  this.MuskTel();
         }
-        if (input == "Mail") {
+        if (input === "Mail") {
             this.#Mail = value;
         }
-        if (input == "Select") {
+        if (input === "Select") {
             this.#Select = value;
         }
-        if (input == "Text") {
+        if (input === "Text") {
             this.#Text = value;
         }
-        if (input == "File") {
+        if (input === "File") {
             this.#File = value;
         }
 
@@ -324,11 +323,11 @@ class Validation {
         /*focus*/
         this.#AllInputs.forEach((e) => {
             let input = e.getAttribute("data-input") // get full keys/name of inputs
-            if (input == "Text" || input == "Mail") {
+            if (input === "Text" || input === "Mail") {
                 e.addEventListener('keyup', () => {
                     /* call function valid */
                     this['Check' + input](); // call function for validation current input
-                    if (this.CheckValid() == true) {
+                    if (this.CheckValid() === true) {
                         this.#BtnStatus = true;
                         this.#Btn.disabled = false;
                     } else {
@@ -338,11 +337,11 @@ class Validation {
                     /* call function valid */
                 })
             }
-            if (input == "File") {
+            if (input === "File") {
                 e.addEventListener('change', () => {
                     /* call function valid */
                     this['Check' + input](); // call function for validation current input
-                    if (this.CheckValid() == true) {
+                    if (this.CheckValid() === true) {
                         this.#BtnStatus = true;
                         this.#Btn.disabled = false;
                     } else {
@@ -440,7 +439,7 @@ class Validation {
     CheckValid() { // function search false status of all inputs
         let status = true;
         Object.values(this.#InputStatus).forEach((e) => {
-            if (e == false) {
+            if (e === false) {
                 status = false;
             }
         })
