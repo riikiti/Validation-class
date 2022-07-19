@@ -512,7 +512,7 @@ class Validation {
         /*focus*/
         this.#AllInputs.forEach((e) => {
             let input = e.getAttribute("data-input") // get full keys/name of inputs
-            if (input === "Text" || input === "Mail") {
+            if (input === "Text" || input === "Mail" || input === "Phone"  ) {
                 e.addEventListener('keyup', () => {
                     /* call function valid */
                     this['Check' + input](); // call function for validation current input
@@ -580,12 +580,15 @@ class Validation {
 
     CheckPhone() {
 
-        let reg = "*{1,20}[.*{1,20}]@*{1,20}.*{1,20}[.*{1,20}]";
-        let value = this.#Mail.value; // get input value
-        let container = this.#Mail.closest("label"); // get parent label
+            let input  = this.#Phone.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        this.#Phone.value = !input[2] ? input[1] : '(' + input[1] + ') ' + input[2] + (input[3] ? '-' + input[3] : '');
+
+
+
+
+        let container = this.#Phone.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
-        let validReg = Inputmask.isValid(value, {mask: '+7 (999) 999-99-99'});//Проверяем на валидность
-        validReg = (reg).test(value);
+
         if (!validReg) {
             // todo сделать появление ошибки
             this.#Phone.classList.add("error-border"); // style error
@@ -646,8 +649,16 @@ class Validation {
             filename = filename.substring(0, 30);
             filename += "...";
         }
-        msg.innerText = filename;
-        this.#InputStatus.File = true;
+        if (!file.value){
+            this.#InputStatus.File = false;
+            msg.innerText= "file not defined"
+        }
+        else{
+            this.#InputStatus.File = true;
+            msg.innerText = filename + extension;
+        }
+
+
     }
 
 
