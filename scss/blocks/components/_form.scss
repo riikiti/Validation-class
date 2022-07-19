@@ -195,3 +195,17 @@ flex-direction: column;
 .thanks-msg{
   margin-bottom: 200px;
 }
+
+.selected{
+  background-color: red;
+}
+.result__box{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid red;
+}
+.result__item{
+  cursor:pointer;
+  user-select:none;
+}

@@ -15,16 +15,12 @@
 
 </head>
 <body>
-<main >
+<main>
 
     <section class="customer__contact contact-us">
         <div class="customer__contact-container">
             <div class="contacts__form ">
                 <div class="contacts__form__wrap">
-
-
-
-
 
 
                     <form class="js-form customer__contact-form modal__wrap_content__form form-modal">
@@ -38,7 +34,7 @@
                             <label class="form__item">
                                 <input
                                         type="text"
-                                        class="modal-input js-input-text"
+                                        class="modal-input js-input-text input"
                                         placeholder="Иванов Иван Иванович"
                                         data-input="Text"
                                         required
@@ -68,7 +64,7 @@
                                 <input
                                         type="text"
                                         placeholder="ivanov@mail.ru"
-                                        class="modal-input js-input-mail"
+                                        class="modal-input js-input-mail input"
                                         data-input="Mail"
                                         required
                                 />
@@ -80,7 +76,7 @@
                             </label>
                             <!-- msg-->
                             <label class="form__item">
-                            <textarea class="modal-textarea contact-textarea js-input-text"
+                            <textarea class="modal-textarea contact-textarea js-input-text input"
                                       placeholder="Сообщение"
 
                             ></textarea>
@@ -92,10 +88,28 @@
                             </label>
                             <!-- file-->
 
-                                                       <label class="modal-file-label">
-                                                            <input class="modal-input custom-file-upload"      data-input="File" placeholder="" type="file">
-                                                            <span class="file-name">Прикрепить файл до 25 Мб</span>
-                                                        </label>
+                            <label class="modal-file-label">
+                                <input class="modal-input custom-file-upload input" data-input="File" placeholder=""
+                                       type="file">
+                                <span class="file-name">Прикрепить файл до 25 Мб</span>
+                            </label>
+                            <!--select-->
+                            <label class="form__item">
+                                <div class="result__box"></div>
+                                <select name="" class="select input" id=""  data-input="Select">
+                                    <option value="1">Value 1</option>
+                                    <option value="2">Value 2</option>
+                                    <option value="3">Value 3</option>
+                                    <option value="4">Value 4</option>
+                                </select>
+                                <div class="result"></div>
+                                <div class="message-show">
+                                <span class="form__warning js-warning">
+					<span class="form__warning_message">Error message</span>
+				</span>
+                                </div>
+                            </label>
+
                             <!-- connect-->
                             <label class="label-connection-modal">Предпочтительный способ связи</label>
                             <div class="modal-change-connect ">
@@ -118,14 +132,6 @@
                         </div>
 
                     </form>
-
-
-
-
-
-
-
-
 
 
                 </div>

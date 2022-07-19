@@ -250,13 +250,200 @@ if (document.querySelector(".js-form")) {
     }
 }
 */
+class CustomSelect {
+    #selector;
+    #lengthOptions;
+    #resultBox;
+    #resultItems;
+    #indexess;
+    #option;
+    #multiple;
+    #selectedIndexes;
+    constructor(selector, options = null) {
+        this.#selector = document.querySelector(selector);
+        this.#lengthOptions = this.#selector.options.length;
+        this.#resultBox = document.querySelector(".result");
+        this.#option = options;
+        for (let x = 0; x < this.#lengthOptions; x++) {
+            this.#resultBox.insertAdjacentHTML(
+                "beforeend",
+                this.#drawBoxes(x, this.#selector.options[x].text)
+            );
+        }
+        this.#resultItems = document.querySelectorAll(".result__item span");
+        if (this.#option.hasOwnProperty("multiple")) {
+            if (this.#option["multiple"] == true) {
+                this.#selector.setAttribute("multiple", "");
+                this.#multiple = true;
+            }
+        } else {
+            if (!this.#option.hasOwnProperty("block")) return;
+            if (this.#option["block"].hasOwnProperty("wrapper")) {
+                this.#getValue();
+            }
+        }
+        if (this.#option.hasOwnProperty("defaultSelect")) {
+            if (!this.#option["defaultSelect"]) {
+                this.#selector.selectedIndex = -1;
+            } else {
+                this.#selector.selectedIndex = 0;
+                this.#setSelected(this.#selector.selectedIndex);
+            }
+        }
+        this.#getChecked();
+        if (!this.#option.hasOwnProperty("block")) return;
+        if (this.#option["block"].hasOwnProperty("wrapper")) {
+            this.#getValue();
+        }
+        if (
+            this.#option.hasOwnProperty("defaultSelect") &&
+            this.#option.hasOwnProperty("defaultSelectIndex")
+        ) {
+            if (this.#option["defaultSelect"]) {
+                if (this.#option["defaultSelectIndex"] < this.#lengthOptions) {
+                    this.#selector.selectedIndex = this.#option["defaultSelectIndex"];
+                    this.#setSelected(this.#selector.selectedIndex);
+                    this.#getChecked();
+                    if (!this.#option.hasOwnProperty("block")) return;
+                    if (this.#option["block"].hasOwnProperty("wrapper")) {
+                        this.#getValue();
+                    }
+                } else {
+                    throw "defaultSelectIndex -- Parametr is Bad";
+                }
+            }
+        }
+
+        this.#itemsValid();
+    }
+    #setSelected(index) {
+        for (let i = 0; i < this.#resultItems.length; i++) {
+            const parent = this.#resultItems[i].closest(".result__item");
+            if (parent.classList.contains("selected")) {
+                parent.classList.remove("selected");
+                this.#resultItems[i].ariaChecked = false;
+            }
+            if (i == index) {
+                if (!parent.classList.contains("selected")) {
+                    parent.classList.add("selected");
+                    this.#resultItems[i].ariaChecked = true;
+                }
+            }
+        }
+    }
+    #removeSelected() {
+        this.#resultItems.forEach((el) => {
+            const parent = el.closest(".result__item");
+            if (parent.classList.contains("selected")) {
+                parent.classList.remove("selected");
+                el.ariaChecked = false;
+            }
+        });
+    }
+    #drawBoxes(position, value) {
+        return `  <div class="result__item">
+        <span aria-setsize="${
+            this.#lengthOptions
+        }" aria-checked="false" aria-posinset="${position}"
+          >${value}</span
+        >
+      </div>`;
+    }
+    #getValue() {
+        // console.log(this.#option['block']['concat']);
+        if (!this.#option.hasOwnProperty("block")) return;
+        if (!this.#option["block"].hasOwnProperty("concat")) return;
+        if (this.#option["block"].hasOwnProperty("wrapper")) {
+            const wrapper = document.querySelector(this.#option["block"]["wrapper"]);
+            wrapper.textContent = "";
+            if (this.#getArray().length > 0) {
+                wrapper.insertAdjacentHTML(
+                    "beforeend",
+                    this.#getArray().join(this.#option["block"]["concat"])
+                );
+            } else {
+                if (this.#option["block"].hasOwnProperty("isEmptyFieldStr")) {
+                    wrapper.textContent = this.#option["block"]["isEmptyFieldStr"];
+                }
+            }
+        }
+    }
+    #getArray() {
+        let arr = [];
+        for (let i = 0; i < this.#lengthOptions; i++) {
+            if (this.#selectedIndexes.includes(i)) {
+                arr.push(this.#selector.options[i].text);
+            }
+        }
+        return arr;
+    }
+    getString() {
+        if (!this.#option.hasOwnProperty("block")) return;
+        if (!this.#option["block"].hasOwnProperty("concat")) return;
+        if (!this.#option["block"].hasOwnProperty("wrapper")) {
+            return this.#selectedIndexes.join(this.#option["block"]["concat"]);
+        }
+    }
+    #getChecked() {
+        this.#selectedIndexes = Array.from(this.#selector.selectedOptions).map(
+            (option) => option.index
+        );
+    }
+
+    #itemsValid() {
+        this.#resultItems.forEach((item) => {
+            const parent = item.closest(".result__item");
+            item.addEventListener("click", () => {
+                if (!this.#multiple) {
+                    this.#removeSelected();
+                    if (!parent.classList.contains("selected")) {
+                        parent.classList.add("selected");
+                        item.ariaChecked = "true";
+                        this.#selector.options[item.ariaPosInSet].selected = true;
+                    }
+                } else {
+                    if (!parent.classList.contains("selected")) {
+                        parent.classList.add("selected");
+                        item.ariaChecked = "true";
+                        this.#selector.options[item.ariaPosInSet].selected = true;
+                    } else {
+                        parent.classList.remove("selected");
+                        item.ariaChecked = "false";
+                        this.#selector.options[item.ariaPosInSet].selected = false;
+                    }
+                }
+                this.#getChecked();
+                if (!this.#option.hasOwnProperty("block")) return;
+                if (this.#option["block"].hasOwnProperty("wrapper")) {
+                    this.#getValue();
+                }
+            });
+        });
+    }
+}
+
+let options = {
+    block: {
+        wrapper: ".result__box",
+        concat: ".,",
+        isEmptyFieldStr: "default text"
+    },
+    multiple: true,
+    defaultSelect: false,
+    defaultSelectIndex: 3
+};
+const selectt = new CustomSelect(".select", options);
+
+
+
+
 
 
 class Validation {
     #Phone;
     #Mail;
     #Select;
-    #Text = [];
+    #Text;
     #File;
     #Btn;
     #InputStatus = {}; // obj
@@ -271,7 +458,7 @@ class Validation {
             this.#Btn.disabled = true; // make btn disabled
             /* btn init */
 
-            let inputs = form.querySelectorAll("input"); // find all inputs in form
+            let inputs = form.querySelectorAll(".input"); // find all inputs in form
             this.#AllInputs = inputs; // add at variable all inputs for focus searching
             inputs.forEach((e) => {
                 if (e.getAttribute("data-input") != null) {
@@ -287,6 +474,7 @@ class Validation {
     }
 
     SelectInput(input, value) {
+        let i = 0;
         if (input === "Phone") {
             this.#Phone = value;
             //  this.MuskTel();
@@ -299,6 +487,7 @@ class Validation {
         }
         if (input === "Text") {
             this.#Text = value;
+
         }
         if (input === "File") {
             this.#File = value;
@@ -337,8 +526,22 @@ class Validation {
                     /* call function valid */
                 })
             }
-            if (input === "File") {
+            if (input === "File"  ) {
                 e.addEventListener('change', () => {
+                    /* call function valid */
+                    this['Check' + input](); // call function for validation current input
+                    if (this.CheckValid() === true) {
+                        this.#BtnStatus = true;
+                        this.#Btn.disabled = false;
+                    } else {
+                        this.#BtnStatus = false;
+                        this.#Btn.disabled = true;
+                    }
+                    /* call function valid */
+                })
+            }
+            if (input==="Select"){
+                e.addEventListener('click', () => {
                     /* call function valid */
                     this['Check' + input](); // call function for validation current input
                     if (this.CheckValid() === true) {
@@ -408,12 +611,24 @@ class Validation {
             this.#InputStatus.Mail = false; // input is not valid
         } else {
             this.#Mail.classList.remove("error-border"); // style error
-            this.#InputStatus.Mail = true; // input is not valid
+            this.#InputStatus.Mail = true; // input is  valid
         }
     }
 
     CheckSelect() {
-
+        let select = this.#Select;
+        let value;
+        try {
+             value = select.options[select.selectedIndex].value;
+        }catch (err){
+            value = undefined;
+            this.#InputStatus.Select = false; // input is not valid
+        }
+        if ( value ) {
+            this.#InputStatus.Select = true; // input is  valid
+        } else {
+            this.#InputStatus.Select = false; // input is not valid
+        }
     }
 
     CheckFile() {
