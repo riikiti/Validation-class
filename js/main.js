@@ -423,17 +423,21 @@ class Validation {
 
     CheckFile() {
 
-            //todo сделалать сколько символов файлов показывать при создание обьекта класса и переписать на ванильке
-            var file = this.#File;
-            // var fileLen = fileName.html($('input[type=file]').val().split('\\').pop());
-            var split = this.#File.val().split('\\').pop().split('.');
-            var filename = split[0];
-            var extension = split[1];
-            if (filename.length > 10) {
-                filename = filename.substring(0, 30);
-                filename += "...";
-            }
-            file.html(filename);
+        //todo сделалать сколько символов файлов показывать при создание обьекта класса и переписать на ванильке
+        var file = this.#File;
+        let container = this.#File.closest("label");
+        let msg = container.querySelector("span");
+        // var fileLen = fileName.html($('input[type=file]').val().split('\\').pop());
+        // console.log(file.value.split('\\').pop().split('.'));
+        var split = file.value.split('\\').pop().split('.');
+        var filename = split[0];
+        var extension = split[1];
+        if (filename.length > 10) {
+            filename = filename.substring(0, 30);
+            filename += "...";
+        }
+        msg.innerText = filename;
+        this.#InputStatus.File = true;
     }
 
 
