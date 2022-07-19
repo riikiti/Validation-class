@@ -253,11 +253,10 @@ if (document.querySelector(".js-form")) {
 
 
 class Validation {
-    #Name;
     #Phone;
     #Mail;
     #Select;
-    #Textarea;
+    #Text = [];
     #File;
     #Btn;
     #InputStatus = {}; // obj
@@ -289,9 +288,6 @@ class Validation {
     }
 
     SelectInput(input, value) {
-        if (input == "Name") {
-            this.#Name = value;
-        }
         if (input == "Phone") {
             this.#Phone = value;
             //  this.MuskTel();
@@ -302,8 +298,8 @@ class Validation {
         if (input == "Select") {
             this.#Select = value;
         }
-        if (input == "Textarea") {
-            this.#Textarea = value;
+        if (input == "Text") {
+            this.#Text = value;
         }
         if (input == "File") {
             this.#File = value;
@@ -328,7 +324,7 @@ class Validation {
         /*focus*/
         this.#AllInputs.forEach((e) => {
             let input = e.getAttribute("data-input") // get full keys/name of inputs
-            if (input == "Name" || input == "Mail" || input == "Textarea") {
+            if (input == "Text" || input == "Mail") {
                 e.addEventListener('keyup', () => {
                     /* call function valid */
                     this['Check' + input](); // call function for validation current input
@@ -364,19 +360,19 @@ class Validation {
 
     }
 
-    CheckName() {
-        let value = this.#Name.value; // get input value
-        let container = this.#Name.closest('label'); // get parent label
+    CheckText() {
+        let value = this.#Text.value; // get input value
+        let container = this.#Text.closest('label'); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
         //todo вставлять контент ошибки
         if (value.length < 2) {
             // todo сделать появление ошибки
-            this.#Name.classList.add("error-border"); // style error
-            this.#InputStatus.Name = false; // input is not valid
+            this.#Text.classList.add("error-border"); // style error
+            this.#InputStatus.Text = false; // input is not valid
         } else {
 
-            this.#Name.classList.remove("error-border"); // style error
-            this.#InputStatus.Name = true; // input is not valid
+            this.#Text.classList.remove("error-border"); // style error
+            this.#InputStatus.Text = true; // input is not valid
         }
     }
 
