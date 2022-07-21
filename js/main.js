@@ -1,4 +1,3 @@
-
 class CustomSelect {
     #selector;
     #lengthOptions;
@@ -8,6 +7,7 @@ class CustomSelect {
     #option;
     #multiple;
     #selectedIndexes;
+
     constructor(selector, options = null) {
         this.#selector = document.querySelector(selector);
         this.#lengthOptions = this.#selector.options.length;
@@ -65,6 +65,7 @@ class CustomSelect {
 
         this.#itemsValid();
     }
+
     #setSelected(index) {
         for (let i = 0; i < this.#resultItems.length; i++) {
             const parent = this.#resultItems[i].closest(".result__item");
@@ -80,6 +81,7 @@ class CustomSelect {
             }
         }
     }
+
     #removeSelected() {
         this.#resultItems.forEach((el) => {
             const parent = el.closest(".result__item");
@@ -89,6 +91,7 @@ class CustomSelect {
             }
         });
     }
+
     #drawBoxes(position, value) {
         return `  <div class="result__item">
         <span aria-setsize="${
@@ -98,6 +101,7 @@ class CustomSelect {
         >
       </div>`;
     }
+
     #getValue() {
         // console.log(this.#option['block']['concat']);
         if (!this.#option.hasOwnProperty("block")) return;
@@ -117,6 +121,7 @@ class CustomSelect {
             }
         }
     }
+
     #getArray() {
         let arr = [];
         for (let i = 0; i < this.#lengthOptions; i++) {
@@ -126,6 +131,7 @@ class CustomSelect {
         }
         return arr;
     }
+
     getString() {
         if (!this.#option.hasOwnProperty("block")) return;
         if (!this.#option["block"].hasOwnProperty("concat")) return;
@@ -133,6 +139,7 @@ class CustomSelect {
             return this.#selectedIndexes.join(this.#option["block"]["concat"]);
         }
     }
+
     #getChecked() {
         this.#selectedIndexes = Array.from(this.#selector.selectedOptions).map(
             (option) => option.index
@@ -184,15 +191,11 @@ let options = {
 const selectt = new CustomSelect(".select", options);
 
 
-
-
-
-
 class Validation {
     #Phone;
     #Mail;
     #Select;
-    #Text= [];
+    #Text = [];
     #File;
     #Btn;
     #InputStatus = {}; // obj
@@ -225,7 +228,6 @@ class Validation {
     SelectInput(input, value) {
         if (input === "Phone") {
             this.#Phone = value;
-            //  this.MuskTel();
         }
         if (input === "Mail") {
             this.#Mail = value;
@@ -235,7 +237,6 @@ class Validation {
         }
         if (input === "Text") {
             this.#Text.push(value);
-            console.log(this.#Text)
         }
         if (input === "File") {
             this.#File = value;
@@ -244,6 +245,17 @@ class Validation {
     }
 
 
+    #CallMethood(input,e){
+        /* call function valid */
+        this['Check' + input](e); // call function for validation current input
+        if (this.CheckValid() === true) {
+            this.#BtnStatus = true;
+            this.#Btn.disabled = false;
+        } else {
+            this.#BtnStatus = false;
+            this.#Btn.disabled = true;
+        }
+    }
 
 
     CheckDisabled() {
@@ -252,46 +264,24 @@ class Validation {
         /*focus*/
         this.#AllInputs.forEach((e) => {
             let input = e.getAttribute("data-input") // get full keys/name of inputs
-            if (input === "Text" || input === "Mail" || input === "Phone"  ) {
-                e.addEventListener('keyup', () => {
-                    /* call function valid */
-                    console.log(e);
-                    this['Check' + input](e); // call function for validation current input
-                    if (this.CheckValid() === true) {
-                        this.#BtnStatus = true;
-                        this.#Btn.disabled = false;
-                    } else {
-                        this.#BtnStatus = false;
-                        this.#Btn.disabled = true;
-                    }
+            if (input === "Text" || input === "Mail" || input === "Phone") {
+                e.addEventListener('input', () => {
+                    this.#CallMethood(input,e);
                     /* call function valid */
                 })
             }
-            if (input === "File"  ) {
+
+            if (input === "File") {
                 e.addEventListener('change', () => {
                     /* call function valid */
-                    this['Check' + input](); // call function for validation current input
-                    if (this.CheckValid() === true) {
-                        this.#BtnStatus = true;
-                        this.#Btn.disabled = false;
-                    } else {
-                        this.#BtnStatus = false;
-                        this.#Btn.disabled = true;
-                    }
+                    this.#CallMethood(input,e);
                     /* call function valid */
                 })
             }
-            if (input==="Select"){
+            if (input === "Select") {
                 e.addEventListener('click', () => {
                     /* call function valid */
-                    this['Check' + input](); // call function for validation current input
-                    if (this.CheckValid() === true) {
-                        this.#BtnStatus = true;
-                        this.#Btn.disabled = false;
-                    } else {
-                        this.#BtnStatus = false;
-                        this.#Btn.disabled = true;
-                    }
+                    this.#CallMethood(input,e);
                     /* call function valid */
                 })
             }
@@ -309,42 +299,39 @@ class Validation {
         let error = container.querySelector(".js-warning"); // get error msg
         //todo вставлять контент ошибки
         if (value.length < 2) {
-            // todo сделать появление ошибки
             input.classList.add("error-border"); // style error
             this.#InputStatus.Text = false; // input is not valid
-            error.style.display="block";
+            error.style.display = "block";
         } else {
-
             input.classList.remove("error-border"); // style error
             this.#InputStatus.Text = true; // input is not valid
-            error.style.display="none";
+            error.style.display = "none";
         }
     }
 
-    CheckPhone() {
+    CheckPhone(e) {
+        let input  = this.#Phone.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        this.#Phone.value = !input[2] ? input[1] :'+' + input[1] + '(' + input[2] + ') ' + input[3] + (input[4] ? '-' + input[4] : '') + (input[5] ? '-' + input[5] : '');
 
-        let input  = this.#Phone.value.replace(/\D/g, '').match(/(\d)(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        this.#Phone.value = !input[2] ? input[1] : '+' +   input[1] +  '(' + input[2] + ') ' + input[3] + (input[4] ? '-' + input[4] : '')  + (input[5] ? '-' + input[5] : '');
-      //  console.log(this.#Phone.value.length);
+        //  console.log(this.#Phone.value.length);
         let container = this.#Phone.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
         let validReg = this.#Phone.value.length;
 
-        if (validReg<17) {
-            // todo сделать появление ошибки
+        if (validReg < 17) {
             this.#Phone.classList.add("error-border"); // style error
             this.#InputStatus.Phone = false; // input is not valid
-            error.style.display="block";
+            error.style.display = "block";
         } else {
 
             this.#Phone.classList.remove("error-border"); // style error
             this.#InputStatus.Phone = true; // input is not valid
-            error.style.display="none";
+            error.style.display = "none";
         }
 
     }
 
-    CheckMail() {
+    CheckMail(e) {
         let email = /([\w-\.]+@[\w\.]+\.{1}[\w]+)/;
         let value = this.#Mail.value; // get input value
         let container = this.#Mail.closest("label"); // get parent label
@@ -352,14 +339,13 @@ class Validation {
         console.log(email.test(value))
         let validReg = email.test(value);
         if (!validReg) {
-            // todo сделать появление ошибки
             this.#Mail.classList.add("error-border"); // style error
             this.#InputStatus.Mail = false; // input is not valid
-            error.style.display="block";
+            error.style.display = "block";
         } else {
             this.#Mail.classList.remove("error-border"); // style error
             this.#InputStatus.Mail = true; // input is  valid
-            error.style.display="none";
+            error.style.display = "none";
         }
     }
 
@@ -367,12 +353,12 @@ class Validation {
         let select = this.#Select;
         let value;
         try {
-             value = select.options[select.selectedIndex].value;
-        }catch (err){
+            value = select.options[select.selectedIndex].value;
+        } catch (err) {
             value = undefined;
             this.#InputStatus.Select = false; // input is not valid
         }
-        if ( value ) {
+        if (value) {
             this.#InputStatus.Select = true; // input is  valid
         } else {
             this.#InputStatus.Select = false; // input is not valid
@@ -394,11 +380,10 @@ class Validation {
             filename = filename.substring(0, 30);
             filename += "..";
         }
-        if (!file.value){
+        if (!file.value) {
             this.#InputStatus.File = false;
-            msg.innerText= "file not defined"
-        }
-        else{
+            msg.innerText = "file not defined"
+        } else {
             this.#InputStatus.File = true;
             msg.innerText = filename + '.' + extension;
         }
