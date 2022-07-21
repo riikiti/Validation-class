@@ -192,7 +192,7 @@ class Validation {
     #Phone;
     #Mail;
     #Select;
-    #Text;
+    #Text= [];
     #File;
     #Btn;
     #InputStatus = {}; // obj
@@ -223,7 +223,6 @@ class Validation {
     }
 
     SelectInput(input, value) {
-        let i = 0;
         if (input === "Phone") {
             this.#Phone = value;
             //  this.MuskTel();
@@ -235,8 +234,8 @@ class Validation {
             this.#Select = value;
         }
         if (input === "Text") {
-            this.#Text = value;
-
+            this.#Text.push(value);
+            console.log(this.#Text)
         }
         if (input === "File") {
             this.#File = value;
@@ -244,27 +243,20 @@ class Validation {
 
     }
 
-    MuskTel() {
-        $(function () {
-            jQuery('.js-input-phone').inputmask({
-                mask: '+7 (999) 999-99-99',
-                showMaskOnHover: true,
-                inputmode: 'tel',
-            });
-        })
-    }
+
 
 
     CheckDisabled() {
 
-        //todo need method as loop event listner keyup on inputs
+        //todo need method as loop event listener keyup on inputs
         /*focus*/
         this.#AllInputs.forEach((e) => {
             let input = e.getAttribute("data-input") // get full keys/name of inputs
             if (input === "Text" || input === "Mail" || input === "Phone"  ) {
                 e.addEventListener('keyup', () => {
                     /* call function valid */
-                    this['Check' + input](); // call function for validation current input
+                    console.log(e);
+                    this['Check' + input](e); // call function for validation current input
                     if (this.CheckValid() === true) {
                         this.#BtnStatus = true;
                         this.#Btn.disabled = false;
@@ -311,25 +303,27 @@ class Validation {
 
     }
 
-    CheckText() {
-        let value = this.#Text.value; // get input value
-        let container = this.#Text.closest('label'); // get parent label
+    CheckText(input) {
+        let value = input.value; // get input value
+        let container = input.closest('label'); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
         //todo вставлять контент ошибки
         if (value.length < 2) {
             // todo сделать появление ошибки
-            this.#Text.classList.add("error-border"); // style error
+            input.classList.add("error-border"); // style error
             this.#InputStatus.Text = false; // input is not valid
+            error.style.display="block";
         } else {
 
-            this.#Text.classList.remove("error-border"); // style error
+            input.classList.remove("error-border"); // style error
             this.#InputStatus.Text = true; // input is not valid
+            error.style.display="none";
         }
     }
 
     CheckPhone() {
 
-        let input  = this.#Phone.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        let input  = this.#Phone.value.replace(/\D/g, '').match(/(\d)(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
         this.#Phone.value = !input[2] ? input[1] : '+' +   input[1] +  '(' + input[2] + ') ' + input[3] + (input[4] ? '-' + input[4] : '')  + (input[5] ? '-' + input[5] : '');
       //  console.log(this.#Phone.value.length);
         let container = this.#Phone.closest("label"); // get parent label
@@ -340,10 +334,12 @@ class Validation {
             // todo сделать появление ошибки
             this.#Phone.classList.add("error-border"); // style error
             this.#InputStatus.Phone = false; // input is not valid
+            error.style.display="block";
         } else {
 
             this.#Phone.classList.remove("error-border"); // style error
             this.#InputStatus.Phone = true; // input is not valid
+            error.style.display="none";
         }
 
     }
@@ -359,9 +355,11 @@ class Validation {
             // todo сделать появление ошибки
             this.#Mail.classList.add("error-border"); // style error
             this.#InputStatus.Mail = false; // input is not valid
+            error.style.display="block";
         } else {
             this.#Mail.classList.remove("error-border"); // style error
             this.#InputStatus.Mail = true; // input is  valid
+            error.style.display="none";
         }
     }
 
