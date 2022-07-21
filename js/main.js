@@ -320,7 +320,7 @@ class Validation {
         let error = container.querySelector(".js-warning"); // get error msg
         let validReg = this.#Phone.value.length;
 
-        if (validReg < 16) {
+        if (validReg < 17) {
             this.#Phone.classList.add("error-border"); // style error
             this.#InputStatus.Phone = false; // input is not valid
             error.style.display = "block";
