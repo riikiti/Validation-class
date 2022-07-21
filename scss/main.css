@@ -4100,6 +4100,22 @@ textarea {
   margin-bottom: 200px;
 }
 
+.selected {
+  background-color: red;
+}
+
+.result__box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid red;
+}
+
+.result__item {
+  cursor: pointer;
+  user-select: none;
+}
+
 .certificate__container {
   padding: 90px 200px 150px 200px;
 }
@@ -7818,3 +7834,5 @@ textarea {
     max-width: unset;
   }
 }
+
+/*# sourceMappingURL=main.css.map */
