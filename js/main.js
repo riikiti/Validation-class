@@ -198,6 +198,7 @@ class Validation {
     #Text = [];
     #File;
     #Btn;
+    #Checkbox;
     #InputStatus = {}; // obj
     #BtnStatus;
     #AllInputs; // for focus
@@ -240,6 +241,9 @@ class Validation {
         }
         if (input === "File") {
             this.#File = value;
+        }
+        if (input === "Checkbox") {
+            this.#Checkbox = value;
         }
 
     }
@@ -286,11 +290,7 @@ class Validation {
                 })
             }
         })
-
-
         /*focus*/
-
-
     }
 
     CheckText(input) {
@@ -310,15 +310,17 @@ class Validation {
     }
 
     CheckPhone(e) {
+
         let input  = this.#Phone.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        this.#Phone.value = !input[2] ? input[1] :'+' + input[1] + '(' + input[2] + ') ' + input[3] + (input[4] ? '-' + input[4] : '') + (input[5] ? '-' + input[5] : '');
+        const code ='+';
+        this.#Phone.value = code + input[1] + (!input[3] ?   input[2] : '(' + input[2] + ') ' + input[3] + (input[4] ? '-' + input[4] : '') + (input[5] ? '-' + input[5] : ''));
 
         //  console.log(this.#Phone.value.length);
         let container = this.#Phone.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
         let validReg = this.#Phone.value.length;
 
-        if (validReg < 17) {
+        if (validReg < 16) {
             this.#Phone.classList.add("error-border"); // style error
             this.#InputStatus.Phone = false; // input is not valid
             error.style.display = "block";
@@ -388,6 +390,10 @@ class Validation {
             msg.innerText = filename + '.' + extension;
         }
 
+
+    }
+
+    CheckCheckbox(){
 
     }
 
