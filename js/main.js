@@ -198,7 +198,7 @@ class Validation {
     #Text = [];
     #File;
     #Btn;
-    #Checkbox;
+    #Checkbox = [];
     #InputStatus = {}; // obj
     #BtnStatus;
     #AllInputs; // for focus
@@ -243,13 +243,13 @@ class Validation {
             this.#File = value;
         }
         if (input === "Checkbox") {
-            this.#Checkbox = value;
+            this.#Checkbox.push(value);
         }
 
     }
 
 
-    #CallMethood(input,e){
+    #CallMethood(input, e) {
         /* call function valid */
         this['Check' + input](e); // call function for validation current input
         if (this.CheckValid() === true) {
@@ -270,22 +270,22 @@ class Validation {
             let input = e.getAttribute("data-input") // get full keys/name of inputs
             if (input === "Text" || input === "Mail" || input === "Phone") {
                 e.addEventListener('input', () => {
-                    this.#CallMethood(input,e);
+                    this.#CallMethood(input, e);
                     /* call function valid */
                 })
             }
 
-            if (input === "File") {
+            if (input === "File" || input === "Checkbox") {
                 e.addEventListener('change', () => {
                     /* call function valid */
-                    this.#CallMethood(input,e);
+                    this.#CallMethood(input, e);
                     /* call function valid */
                 })
             }
             if (input === "Select") {
                 e.addEventListener('click', () => {
                     /* call function valid */
-                    this.#CallMethood(input,e);
+                    this.#CallMethood(input, e);
                     /* call function valid */
                 })
             }
@@ -309,11 +309,10 @@ class Validation {
         }
     }
 
-    CheckPhone(e) {
-
-        let input  = this.#Phone.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        const code ='+';
-        this.#Phone.value = code + input[1] + (!input[3] ?   input[2] : '(' + input[2] + ') ' + input[3] + (input[4] ? '-' + input[4] : '') + (input[5] ? '-' + input[5] : ''));
+    CheckPhone() {
+        let input = this.#Phone.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        const code = '+';
+        this.#Phone.value = code + input[1] + (!input[3] ? input[2] : '(' + input[2] + ') ' + input[3] + (input[4] ? '-' + input[4] : '') + (input[5] ? '-' + input[5] : ''));
 
         //  console.log(this.#Phone.value.length);
         let container = this.#Phone.closest("label"); // get parent label
@@ -333,7 +332,7 @@ class Validation {
 
     }
 
-    CheckMail(e) {
+    CheckMail() {
         let email = /([\w-\.]+@[\w\.]+\.{1}[\w]+)/;
         let value = this.#Mail.value; // get input value
         let container = this.#Mail.closest("label"); // get parent label
@@ -393,8 +392,15 @@ class Validation {
 
     }
 
-    CheckCheckbox(){
+    CheckCheckbox(e) {
+        e.addEventListener('change', () => {
+            if (e.checked) {
+                console.log(e);
+            }
+            else{
 
+            }
+        })
     }
 
 
