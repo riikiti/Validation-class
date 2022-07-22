@@ -66,7 +66,8 @@
 
                             <label class="form__item">
                                 <input type="tel" name="phone"
-                                       class="form__input input js-input-phone modal-input" placeholder="+7 (___) ___-__-__"  data-input="Phone"
+                                       class="form__input input js-input-phone modal-input"
+                                       placeholder="+7 (___) ___-__-__" data-input="Phone"
                                        required/>
                                 <div class="message-show">
                                 <span class="form__warning js-warning">
@@ -112,7 +113,7 @@
                             <!--select-->
                             <label class="form__item">
                                 <div class="result__box"></div>
-                                <select name="" class="select input" id=""  data-input="Select">
+                                <select name="" class="select input" id="" data-input="Select">
                                     <option value="1">Value 1</option>
                                     <option value="2">Value 2</option>
                                     <option value="3">Value 3</option>
@@ -125,16 +126,45 @@
 				</span>
                                 </div>
                             </label>
+                            <!--radio-->
+                            <div class="form-request-card__item">
+                                <div class="form-request-card__card">
+                                    <p class="title-montserrat title-montserrat--body-3">Хотите свой принт?</p>
+                                    <div class="radio-type-list">
+                                        <label for="text-1" class="radio-type-2">
+                                            <input type="radio" class="input" name="text" checked="" value="text-1" id="text-1"    data-input="Radio">
+                                            <span class="radio-type-2__body">
+						<span class="radio-type-2__circle"></span>
+						<span class="radio-type-2__text title-montserrat title-montserrat--body-1">Да, хочу печать</span>
+					</span>
+                                        </label>
+                                        <label for="text-2" class="radio-type-2">
+                                            <input type="radio" class="input" name="text" value="text-2" id="text-2"  data-input="Radio">
+                                            <span class="radio-type-2__body">
+						<span class="radio-type-2__circle"></span>
+						<span class="radio-type-2__text title-montserrat title-montserrat--body-1">Да, хочу вышивку</span>
+					</span>
+                                        </label>
+                                        <label for="text-3" class="radio-type-2">
+                                            <input type="radio" class="input" name="text" value="text-3" id="text-3" data-input="Radio">
+                                            <span class="radio-type-2__body">
+						<span class="radio-type-2__circle"></span>
+						<span class="radio-type-2__text title-montserrat title-montserrat--body-1">Нет</span>
+					</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- connect-->
                             <label class="label-connection-modal">Предпочтительный способ связи</label>
                             <div class="modal-change-connect ">
                                 <div class="modal-change-connect__connect-check  ">
-                                    <input class="custom-checkbox input 1" type="checkbox" data-input="Checkbox" >
+                                    <input class="custom-checkbox input 1" type="checkbox" data-input="Checkbox">
                                     <label>Телефон</label>
                                 </div>
                                 <div class="modal-change-connect__connect-check ">
-                                    <input class="custom-checkbox input 2" type="checkbox"  data-input="Checkbox">
+                                    <input class="custom-checkbox input 2" type="checkbox" data-input="Checkbox">
                                     <label>Почта</label>
                                 </div>
                             </div>

@@ -199,6 +199,7 @@ class Validation {
     #File;
     #Btn;
     #Checkbox = [];
+    #Radio = [];
     #InputStatus = {}; // obj
     #BtnStatus;
     #AllInputs; // for focus
@@ -245,6 +246,10 @@ class Validation {
         if (input === "Checkbox") {
             this.#Checkbox.push(value);
         }
+        if (input === "Radio") {
+            this.#Radio.push(value);
+           this.CheckRadio(value);
+        }
 
     }
 
@@ -275,7 +280,7 @@ class Validation {
                 })
             }
 
-            if (input === "File" || input === "Checkbox") {
+            if (input === "File" || input === "Checkbox" || input === "Radio") {
                 e.addEventListener('change', () => {
                     /* call function valid */
                     this.#CallMethood(input, e);
@@ -337,7 +342,7 @@ class Validation {
         let value = this.#Mail.value; // get input value
         let container = this.#Mail.closest("label"); // get parent label
         let error = container.querySelector(".js-warning"); // get error msg
-        console.log(email.test(value))
+     //   console.log(email.test(value))
         let validReg = email.test(value);
         if (!validReg) {
             this.#Mail.classList.add("error-border"); // style error
@@ -393,14 +398,19 @@ class Validation {
     }
 
     CheckCheckbox(e) {
-        e.addEventListener('change', () => {
-            if (e.checked) {
-                console.log(e);
-            }
-            else{
 
-            }
-        })
+        if (e.checked){
+            this.#InputStatus.Checkbox= true;
+        }else{
+            this.#InputStatus.Checkbox= false;
+        }
+
+    }
+    CheckRadio(e) {
+        console.log(e.checked);
+        if (e.checked){
+            this.#InputStatus.Radio= true;
+        }
     }
 
 
